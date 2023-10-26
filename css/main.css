@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/*
+Theme Name:   nathaliemota
+Theme URI:    http://localhost/nathalie-mota/
+Description:  Thème personnalisé pour la photographe Nathalie Mota
+Author:       Lefebvre Maya
+Author URI:   http://nathalie-mota.local
+Version:      1.0
+*/
+/* Import de la font Poppins en Weight 300 depuis Google Fonts et on l'applique sur tous les éléments de la page */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap");
+/* Import de la font Space Mono depuis Google Fonts et on l'applique sur tous les éléments de la page */
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/* ----------------Général ---------------------------------------------------*/
+body {
+  margin: auto;
+  padding: 0;
+  max-width: 1440px;
+  font-family: Space Mono;
+}
+
+/* ------------------------------------------ HEADER -----------------------------------------------------*/
+#header {
+  display: flex;
+  background-color: #ffffff;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  display: flex;
+  top: 0;
+  height: 80px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.logo {
+  height: auto;
+  margin: 40px;
+}
+.logo img {
+  width: 220px;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-right: 60px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+li {
+  list-style: none;
+}
+
+/* ----------------------------   FOOTER   -----------------------------------------------------*/
+#menu-menu-footer {
+  justify-content: center !important;
+  border-top: 1px solid #000000;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+
+/* ----------------------------   MODALE DE CONTACT   ------------------------------------------*//*# sourceMappingURL=main.css.map */

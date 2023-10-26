@@ -1,16 +1,20 @@
 <?php
-
-function theme_enqueue_styles() {
-    
-       // Déclaration du fichier styles.css à la racine du thème
-       wp_enqueue_style( 
-        'nathaliemota', // le handle, c’est le nom unique donné au fichier.
-        get_stylesheet_directory_uri() . '/css/style.css',
+function styles () {
+// Déclarer le fichier style.css 
+    wp_enqueue_style( 
+        'nathaliemota',
+        get_template_directory_uri() . '/css/main.css',
         array(), 
-        '1.0' // C'est la version '1.0' de ce thème.
+        '1.0'
     );
 }
+    add_action( 'wp_enqueue_scripts', 'styles' );
 
-
-add_action('wp_enqueue_scripts', 'theme_enqueue_styles'); // permet de lier la nouvelle fonction définie à l’action wp_enqueue_scripts.
-
+   
+// ajout d'une fonction permettant d'ajouter/de configurer les menus dans le back office:
+function my_menus() {
+    register_nav_menu( 'main-menu', "Menu principal");
+    register_nav_menu('menu-footer', "Menu pied de page");
+    }
+    // enregistrer la fonction 'my_menus' après la configuration du thème ('after_setup_theme')
+    add_action( 'after_setup_theme', 'my_menus' );
