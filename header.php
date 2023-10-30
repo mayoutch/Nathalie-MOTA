@@ -19,5 +19,8 @@
         <nav id="nav">  
             <!-- Affichage du menu main-menu déclaré dans functions.php  -->
                 <?php wp_nav_menu(['theme_location' => 'main-menu',]); ?>  
+                <ul>
+                    <li><a href="#" id="mybtn" class="btn-contact">CONTACT</a></li> 
+                </ul>
         </nav>
     </header>

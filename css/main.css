@@ -72,7 +72,32 @@ li {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: 40px;
 }
 
-/* ----------------------------   MODALE DE CONTACT   ------------------------------------------*//*# sourceMappingURL=main.css.map */
+/* ----------------------------   MODALE DE CONTACT   ------------------------------------------*/
+/*http://www.w3bai.com/fr/howto/howto_css_modals.html#gsc.tab=0*/
+/* The Modal (background) */
+.modale {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+}
+
+.modale-content {
+  width: 80%;
+  border: 5px solid black;
+  background-color: white;
+}
+
+.btn-contact {
+  color: black;
+}
+
+/* --------------------------                 -------------------------------------------------*//*# sourceMappingURL=main.css.map */
