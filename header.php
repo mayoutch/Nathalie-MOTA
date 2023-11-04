@@ -16,7 +16,7 @@
         <img src="<?php echo get_theme_file_uri() . '/assets/images/logo.png'; ?> "alt="logo de Nathalie Mota">
         </div>
 
-        <nav id="nav">  
+        <nav id="nav-header">  
             <!-- Affichage du menu main-menu déclaré dans functions.php  -->
                 <?php wp_nav_menu(['theme_location' => 'main-menu',]); ?>  
                 <ul>

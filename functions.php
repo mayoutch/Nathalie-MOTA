@@ -28,3 +28,13 @@ function my_menus() {
 
 // Ajout du titre du site dans l'en-tête 
 add_theme_support( 'title-tag' );
+// Ajout de la prise en charge des images mises en avant
+add_theme_support( 'post-thumbnails' );
+
+// --- CPT -- https://capitainewp.io/formations/developper-theme-wordpress/creer-cpt-theme/
+function nathaliemota_register_post_types() {
+	// La déclaration de nos Custom Post Types et Taxonomies ira ici :
+    //finalement inutile car j'ai utilisé les plugin .. 
+
+}
+add_action( 'init', 'nathaliemota_register_post_types' ); // le hook init lance la fonction

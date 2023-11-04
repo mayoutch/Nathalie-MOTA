@@ -6,19 +6,30 @@ Author:       Lefebvre Maya
 Author URI:   http://nathalie-mota.local
 Version:      1.0
 */
+/* ------------------------------- Chargement des Polices ----------------------------------------------------------*/
 /* Import de la font Poppins en Weight 300 depuis Google Fonts et on l'applique sur tous les éléments de la page */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap');
 
 /* Import de la font Space Mono depuis Google Fonts et on l'applique sur tous les éléments de la page */
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-/* ----------------Général ---------------------------------------------------*/
+/* ---------------------------------------------------  Général  ---------------------------------------------------*/
 body {
   margin: auto;
   padding: 0;
+  width: 100vw;
   max-width: 1440px;
   font-family: Space Mono;
   
+}
+
+h2 {
+  font-family: Space Mono;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0.1em;
+
 }
 /* ------------------------------------------ HEADER -----------------------------------------------------*/
 #header {
@@ -46,7 +57,7 @@ body {
     width: 220px;
     }
   }
-nav {
+#nav-header {
     width: 100%;
     display: flex;
     justify-content: end;
@@ -61,42 +72,95 @@ li {
   
   }
 /* ----------------------------   FOOTER   -----------------------------------------------------*/
-#menu-menu-footer{
+#footer{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  border-top: 1px solid #000000 !important;
+  align-items: center;  
   justify-content: center !important;
-  border-top: 1px solid #000000;
+  width: 100%; // c'est ce qui crée le débordement
 }
 
-#footer{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height: 40px;
+#nav-footer{
+  display: flex;
+  flex-direction: row;
 }
+
+
 /* ----------------------------   MODALE DE CONTACT   ------------------------------------------*/
 /*http://www.w3bai.com/fr/howto/howto_css_modals.html#gsc.tab=0*/
-/* The Modal (background) */
+/* The Modal (background) : */
 .modale{
-  display: none; // par défaut, la modale est fermée
-  position: fixed;
-  justify-content: center;
-  align-items: center;
+  display:none; // par défaut, la modale est cachée
+  position: fixed; // reste à sa place
+  z-index: 1000; // au dessus de tout
   width: 100%;
-  height: 100%;
-  z-index: 1000;
-  top: 0;
-  left: 0;
+  top: 10%;
+  left: 30%; // permet de centrer la modale
+  animation: modale 2s ease-in-out; // apparition progressive de la modale en fade in
 }
+
+@keyframes modale{
+  from{ opacity:0}
+  to{opacity: 1;}
+}
+
 .modale-content {
-  width: 80%;
+  width: 597px;
+  height: 769px;
   border: 5px solid black;
   background-color: white;
+  overflow: auto !important; 
+  
+  p{
+    display: flex;
+    justify-content: center;
+  }
+ 
+  > img:nth-child(1){ // titre-logo
+    width: 885,96px !important;
+    height:106.05px;
+  }
+    .wpcf7-text { // Nom, Email et Réf-photo
+    height: 40px;
+    width: 263px;
+    border: 1px solid #D8D8D8;
+    border-radius: 5%;
+  }
+  .wpcf7-textarea { // Message
+    height: 142px;
+    width: 263px;
+    border: 1px solid #D8D8D8;
+    border-radius: 8%;
+}
+  .wpcf7-submit{ // bouton "Envoyer
+    height: 38px;
+    width: 265px;
+    font-family: Space Mono;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    border-radius: 2%;
+    border: 1px solid #D8D8D8;
+    background-color: #D8D8D8;
+    ;
+  }
+  .wpcf7-spinner{
+    display: none;
+  }
 }
 
 .btn-contact{
   color: black;
+  
 }
 
 
-/* --------------------------                 -------------------------------------------------*/
+
+
+/* -------------------------- PHOTOS - ACF/CPT UI - POST CONTENTS  -------------------------------------------------*/
 
 
