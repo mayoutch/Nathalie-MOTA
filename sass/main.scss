@@ -17,7 +17,6 @@ Version:      1.0
 body {
   margin: auto;
   padding: 0;
-  width: 100vw;
   max-width: 1440px;
   font-family: Space Mono;
   
@@ -31,6 +30,11 @@ h2 {
   letter-spacing: 0.1em;
 
 }
+
+p{
+  size: 14px;
+}
+
 /* ------------------------------------------ HEADER -----------------------------------------------------*/
 #header {
   display: flex;
@@ -74,7 +78,7 @@ li {
 /* ----------------------------   FOOTER   -----------------------------------------------------*/
 #footer{
   display: flex;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   height: 40px;
   border-top: 1px solid #000000 !important;
@@ -162,5 +166,63 @@ li {
 
 
 /* -------------------------- PHOTOS - ACF/CPT UI - POST CONTENTS  -------------------------------------------------*/
+.post{
+  border-bottom: 1px solid;
+  position : absolute;
+  left:50px;
+}
+.container-img-text{
+  display: flex;
+}
+.post-infos{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
 
+.post-texte{
+  
+  
+}
+.title-post{
+  font-family: Space Mono;
+  font-size: 66px;
+  font-weight: 400;
+  line-height: 58px;
+}
 
+// img miniature au niveau des flèches (relative à l'img mise en avant dans "Mes images"):
+body > article > div.interesses > div.mini-carroussel > img{
+  width: 75px;
+  height: 75px;
+}
+.interesses{
+  display: flex;
+  align-items: center;
+ justify-content: space-between;
+}
+
+.flex-interesses{
+  display: flex;
+  align-items: center;
+  gap:50px;
+}
+
+// ------ Single-post & lien avec la modale --- 
+#versmodale{ /*id du BOUTON pour aller vers la modale depuis le single-photos.php"*/
+  width: 272px;
+  height: 50px;
+  background-color: #D8D8D8;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  font-family: space mono;
+  border-radius: 2px;
+}
+
+input[type="text" i]{ /*style de la réf qui est appelée*/
+  color:#000000 !important;
+  visibility: visible !important;
+  display: inline !important;
+  opacity: 1 !important;
+}

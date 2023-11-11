@@ -14,6 +14,7 @@ function styles () {
 function script()
 {
     wp_enqueue_script('modale', get_template_directory_uri() . '/js/scripts.js', array(), '1.0');
+    wp_enqueue_script('modale2',get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), '', true);
 }
 add_action('wp_enqueue_scripts', 'script');
 
@@ -38,3 +39,13 @@ function nathaliemota_register_post_types() {
 
 }
 add_action( 'init', 'nathaliemota_register_post_types' ); // le hook init lance la fonction
+
+
+// check ACF - https://www.gregoirenoyelle.com/wordpress-utilisation-basique-advanced-custom-fields-acf/
+if ( ! function_exists( 'get_field' ) ) {
+	add_action( 'template_redirect', 'template_redirect_warning_missing_acf', 0 );
+	function template_redirect_warning_missing_acf() {
+		wp_die( sprintf( 'Ce site ne fonctionne pas sans l\'extension Advanced Custom Fields. Merci de vous connecter au site pour l\'activer.', wp_login_url() ) );
+	}
+
+}
