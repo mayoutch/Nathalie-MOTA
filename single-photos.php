@@ -60,14 +60,14 @@
 
 			  <div class="mini-carroussel">
         <!-- https://developer.wordpress.org/reference/functions/the_post_thumbnail/ -->
-				  <?php the_post_thumbnail(); ?>
+				  <?php the_post_thumbnail(); ?> 
 
 				  <div class="fleches">
 
-						<img class="fleche_gauche"src="<?php echo get_template_directory_uri(). '/assets/images/gauche.png'; ?> "alt="flèche gauche">
+						<img class="fgauche"src="<?php echo get_template_directory_uri(). '/assets/images/gauche.png'; ?> "alt="flèche gauche">
 					  </a>
  
-						<img class="fleche_droite" src="<?php echo get_template_directory_uri(). '/assets/images/droite.png'; ?> "alt="flèche droite">
+						<img class="fdroite" src="<?php echo get_template_directory_uri(). '/assets/images/droite.png'; ?> "alt="flèche droite">
 					  </a>
 
           </div>
@@ -76,6 +76,13 @@
       
 
       <!-- Vous aimerez aussi -->
+      <div class="aimerez">
+        <p>VOUS AIMEREZ AUSSI</p>
+            <div class="photo-row">
+           <?php get_template_part ( 'templates_parts/photo-block'); ?> 
+           </div>
+        <input type="button" class="btntouteslesphotos" value="Toutes les photos"> <a href="http://nathalie-mota.local/">  </a></div>    
+      </div>
 
     </article>
 

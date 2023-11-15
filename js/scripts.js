@@ -42,3 +42,31 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   });
 });
+
+// -------------------------- Fleche gauche, Flèche droite, dans le fichier single-post ----------------------------------------------------//
+// comme dans le projet Print It
+
+let numero = 0; // création de la variable "numéro", qui va changer tout au long du programme Et je l'initialise à 0
+const slides = wp_get_attachment_image_src(); // img à la une
+
+//Ajout du Eventlistener (ajoute un événement au clique de la souris sur chaque flèche)
+const flecheGauche = document.querySelector(".fgauche");
+flecheGauche.addEventListener("click", function () {
+  console.log(flecheGauche);
+  ChangeSlide(-1);
+});
+
+const flecheDroite = document.querySelector(".fdroite");
+flecheDroite.addEventListener("click", function () {
+  console.log(flecheDroite);
+  ChangeSlide(1);
+});
+
+function ChangeSlide(sens) {
+  // création de la fonction ChangeSlide, avec le paramètre "sens"
+  numero = numero + sens;
+  if (numero < 0) numero = slides.length - 1;
+  if (numero > slides.length - 1) numero = 0;
+  document.getElementById("").src = slides[numero]; // le "" renvoie à créa d'un id dans le fichier single-photo (image actuelle)
+}
+// ----------------------------------------------------------------------------------------------------------------------------------------------//

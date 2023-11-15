@@ -84,7 +84,7 @@ li {
   border-top: 1px solid #000000 !important;
   align-items: center;  
   justify-content: center !important;
-  width: 100%; // c'est ce qui crée le débordement
+  width: 1440px;
 }
 
 #nav-footer{
@@ -199,13 +199,24 @@ body > article > div.interesses > div.mini-carroussel > img{
 .interesses{
   display: flex;
   align-items: center;
- justify-content: space-between;
+  justify-content: space-between;
+  margin-top: 118px;
+  border-bottom: solid 1px black;
 }
 
 .flex-interesses{
   display: flex;
   align-items: center;
   gap:50px;
+}
+.mini-caroussel{
+  display: flex !important;
+  
+}
+.fleches{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 // ------ Single-post & lien avec la modale --- 
@@ -225,4 +236,33 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
   visibility: visible !important;
   display: inline !important;
   opacity: 1 !important;
+}
+//-------------------------------------------------------
+
+.aimerez{
+  display: flex;
+  flex-direction: column;
+}
+.photo-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.overlay-image{
+  display: flex;
+  flex-direction: row;
+}
+.btntouteslesphotos{
+  display: flex;
+  width: 272px;
+  height: 50px;
+  background-color: #D8D8D8;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  font-family: space mono;
+  border-radius: 2px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
