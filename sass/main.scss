@@ -193,9 +193,10 @@ li {
 }
 
 // img miniature au niveau des flèches (relative à l'img mise en avant dans "Mes images"):
-body > article > div.interesses > div.mini-carroussel > img{
-  width: 75px;
-  height: 75px;
+
+html body.customize-support article.post div.interesses div.mini-carroussel div.image-container img{
+  width: 100px;
+  height: 100px;
 }
 .interesses{
   display: flex;

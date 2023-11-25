@@ -51,75 +51,52 @@
 
 
       <!-- Vous êtes intéressés -->
-      <div class="interesses">
 
-			  <div class="flex-interesses">
-          <p>Cette photo vous intéresse ?</p>
-				  <input type="button" data-reference="<?php echo get_post_meta(get_the_ID(), 'reference', true); ?>" value="Contact" id="versmodale">
-        </div>
+ 
+
+
 
 			  <!-- <div class="mini-carroussel"> -->
         <!-- https://developer.wordpress.org/reference/functions/the_post_thumbnail/ -->
         
         <?php
-// Récupérez l'objet post associé au champ ACF "type"
 $next_post = get_next_post();
-
-// Vérifiez si un post suivant a été sélectionné 
- if ($next_post) {
-    // Obtenez l'ID du post suivant
-    $next_post_id = $next_post->ID;
-    $next_image_url = wp_get_attachment_image_src(get_post_thumbnail_id($next_post_id), 'thumbnail')[0];
-    ?>
-    
-   
-    <div class="mini-carroussel">
-        <!-- Et afficher ce post suivant: -->
-        <?php echo get_the_post_thumbnail($next_post_id, [100, 100]); ?>
-
-        <div class="fleches">
-           
-                <img class="fgauche" src="<?php echo get_template_directory_uri() . '/assets/images/gauche.png'; ?>" alt="flèche gauche">
-            
-                <img class="fdroite" src="<?php echo get_template_directory_uri() . '/assets/images/droite.png'; ?>" alt="flèche droite">
-            
-        </div>
-    </div>
-
-<!-- Du javascript et du Php, pour post suivant : -->
-    <script>let next_image='<?php echo get_the_post_thumbnail($next_post_id, [100, 100]); ?>'; </script>
-    <?php
-
-
-} else {
-    // Aucun post suivant n'a été sélectionné
-    echo 'Aucun post suivant n\'a été sélectionné.';
-}
-
-// ON FAIT LA MÊME CHOSE POUR LE POST PRECEDENT :
 $previous_post = get_previous_post();
 
-// Vérifiez si un post précédent a été sélectionné
-if ($previous_post) {
-    // Obtenez l'ID du post suivant
-    $previous_post_id = $previous_post->ID;
-
-    // Affichez la vignette du post précédent avec un lien vers ce post
-    ?>
-   
-    <script>let previous_image='<?php echo get_the_post_thumbnail($previous_post_id, [100, 100]); ?>'; </script>
-    <?php
-
-
-} else {
-    // Aucun post précédent n'a été sélectionné
-    echo 'Aucun post précédent n\'a été sélectionné.';
-}
+// Définir les URL des images dans des variables PHP / les variables $next_image_url et $previous_image_url sont définies en PHP avant l'inclusion du script JavaScript. Ainsi, lorsque le script JavaScript est exécuté, ces variables seront déjà présentes et correctement définies.
+$next_image_url = esc_url(wp_get_attachment_image_src(get_post_thumbnail_id($next_post->ID), 'thumbnail')[0]);
+$previous_image_url = esc_url(wp_get_attachment_image_src(get_post_thumbnail_id($previous_post->ID), 'thumbnail')[0]);
 ?>
-			  </div>
-      </div>
-      
 
+<div class="interesses">
+    <div class="flex-interesses">
+        <p>Cette photo vous intéresse ?</p>
+        <input type="button" data-reference="<?php echo get_post_meta(get_the_ID(), 'reference', true); ?>" value="Contact" id="versmodale">
+    </div>
+
+    <div class="mini-carroussel">
+        <div class="image-container">
+            <?php
+            $current_image_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+            echo '<img class="current-image" src="' . esc_url($current_image_url) . '" data-next-image-url="' . esc_url($next_image_url) . '" data-previous-image-url="' . esc_url($previous_image_url) . '" />';
+            ?>
+        </div>
+        <div class="fleches">
+            <a href="<?php echo get_permalink($previous_post->ID); ?>" class="lien-fleche">
+                <img class="fgauche" src="<?php echo get_template_directory_uri() . '/assets/images/gauche.png'; ?>" alt="flèche gauche">
+            </a>
+            <a href="<?php echo get_permalink($next_post->ID); ?>" class="lien-fleche">
+                <img class="fdroite" src="<?php echo get_template_directory_uri() . '/assets/images/droite.png'; ?>" alt="flèche droite">
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // création de deux variables JavaScript (next_image_url et previous_image_url) en utilisant les valeurs obtenues côté serveur par wp_get_attachment_image_src. Ces valeurs sont générées du côté serveur (côté PHP) lorsqu'une page est chargée.
+    let next_image_url = '<?php echo esc_url($next_image_url); ?>';
+    let previous_image_url = '<?php echo esc_url($previous_image_url); ?>';
+</script>
       <!-- Vous aimerez aussi -->
       <div class="aimerez">
         <p>VOUS AIMEREZ AUSSI</p>

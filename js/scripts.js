@@ -49,32 +49,53 @@ document.addEventListener("DOMContentLoaded", (event) => {
 const miniCarroussel = document.querySelector(".mini-carroussel");
 const flecheGauche = document.querySelector(".fgauche");
 const flecheDroite = document.querySelector(".fdroite");
+const imageContainer = document.querySelector(".image-container");
 
 let currentImageIndex = 0;
-const images = [previous_image, next_image];
+const images = [previous_image_url, next_image_url];
 
 function chargerImage(index) {
-  console.log("Chargement de l'image :", images[index]);
+  console.log("Tentative de chargement de l'image à l'index", index);
+
   const imgElement = new Image();
   imgElement.src = images[index];
 
   imgElement.onload = function () {
-    miniCarroussel.querySelector("img").src = images[index];
+    imageContainer.innerHTML = ""; // Efface l'ancienne image
+    imageContainer.appendChild(imgElement); // Ajoute la nouvelle image
     console.log("Image chargée avec succès");
   };
+
+  imgElement.onerror = function () {
+    console.log("Erreur lors du chargement de l'image à l'index", index);
+  };
+
+  currentImageIndex = index;
 }
 
-flecheGauche.addEventListener("mouseover", function () {
+// Initialisation avec la première image au démarrage
+chargerImage(currentImageIndex);
+
+//Au survol ...
+flecheGauche.addEventListener("mouseenter", function () {
   console.log("Survole de la flèche gauche");
   currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
   chargerImage(currentImageIndex);
 });
 
-flecheDroite.addEventListener("mouseover", function () {
+flecheDroite.addEventListener("mouseenter", function () {
   console.log("Survole de la flèche droite");
   currentImageIndex = (currentImageIndex + 1) % images.length;
   chargerImage(currentImageIndex);
 });
 
-// Initialisation avec la première image
-chargerImage(currentImageIndex);
+//Et au clic ...
+flecheGauche.addEventListener("click", function () {
+  console.log("Clic sur la flèche gauche");
+  window.location.href = "<?php echo get_permalink($previous_post_id); ?>"; // Utilise la variable de l'image précédente
+});
+
+flecheDroite.addEventListener("click", function () {
+  console.log("Clic sur la flèche droite");
+  window.location.href = next_image_url; // Utilise la variable que tu as définie dans ton script PHP
+});
