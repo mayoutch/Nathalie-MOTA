@@ -170,6 +170,7 @@ li {
   border-bottom: 1px solid;
   position : absolute;
   left:50px;
+  margin-right: 60px;
 }
 .container-img-text{
   display: flex;
@@ -202,6 +203,7 @@ body > article > div.interesses > div.mini-carroussel > img{
   justify-content: space-between;
   margin-top: 118px;
   border-bottom: solid 1px black;
+  
 }
 
 .flex-interesses{
@@ -265,4 +267,9 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
   align-items: center;
   justify-content: center;
   margin: auto;
+}
+
+/*taille photo - post*/
+.wp-block-image img{
+  
 }

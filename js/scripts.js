@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   };
 
-  // Single-post / Si une réf. photo existe, on la récupére, on ouvre la modale et on fait apparaître la réf dedans:
+  // ----------  Single-post / Si une réf. photo existe, on la récupére, on ouvre la modale et on fait apparaître la réf dedans ------------------
+
   // https://gomakethings.com/strategies-for-working-with-data-attributes-in-vanilla-javascript/
   single.addEventListener("click", (event) => {
     const reference = event.target.getAttribute("data-reference"); // "data-reference" renvoie à un ID ajouté dans single-photos et qui récupère en php la réf de la photo
@@ -44,29 +45,36 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 // -------------------------- Fleche gauche, Flèche droite, dans le fichier single-post ----------------------------------------------------//
-// comme dans le projet Print It
 
-let numero = 0; // création de la variable "numéro", qui va changer tout au long du programme Et je l'initialise à 0
-const slides = wp_get_attachment_image_src(); // img à la une
-
-//Ajout du Eventlistener (ajoute un événement au clique de la souris sur chaque flèche)
+const miniCarroussel = document.querySelector(".mini-carroussel");
 const flecheGauche = document.querySelector(".fgauche");
-flecheGauche.addEventListener("click", function () {
-  console.log(flecheGauche);
-  ChangeSlide(-1);
-});
-
 const flecheDroite = document.querySelector(".fdroite");
-flecheDroite.addEventListener("click", function () {
-  console.log(flecheDroite);
-  ChangeSlide(1);
+
+let currentImageIndex = 0;
+const images = [previous_image, next_image];
+
+function chargerImage(index) {
+  console.log("Chargement de l'image :", images[index]);
+  const imgElement = new Image();
+  imgElement.src = images[index];
+
+  imgElement.onload = function () {
+    miniCarroussel.querySelector("img").src = images[index];
+    console.log("Image chargée avec succès");
+  };
+}
+
+flecheGauche.addEventListener("mouseover", function () {
+  console.log("Survole de la flèche gauche");
+  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+  chargerImage(currentImageIndex);
 });
 
-function ChangeSlide(sens) {
-  // création de la fonction ChangeSlide, avec le paramètre "sens"
-  numero = numero + sens;
-  if (numero < 0) numero = slides.length - 1;
-  if (numero > slides.length - 1) numero = 0;
-  document.getElementById("").src = slides[numero]; // le "" renvoie à créa d'un id dans le fichier single-photo (image actuelle)
-}
-// ----------------------------------------------------------------------------------------------------------------------------------------------//
+flecheDroite.addEventListener("mouseover", function () {
+  console.log("Survole de la flèche droite");
+  currentImageIndex = (currentImageIndex + 1) % images.length;
+  chargerImage(currentImageIndex);
+});
+
+// Initialisation avec la première image
+chargerImage(currentImageIndex);

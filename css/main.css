@@ -165,6 +165,7 @@ li {
   border-bottom: 1px solid;
   position: absolute;
   left: 50px;
+  margin-right: 60px;
 }
 
 .container-img-text {
@@ -260,4 +261,6 @@ input[type=text i] { /*style de la réf qui est appelée*/
   align-items: center;
   justify-content: center;
   margin: auto;
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*taille photo - post*//*# sourceMappingURL=main.css.map */

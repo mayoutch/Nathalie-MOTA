@@ -13,7 +13,7 @@ function styles () {
 // Déclarer le fichier scripts.js:
 function script()
 {
-    wp_enqueue_script('modale', get_template_directory_uri() . '/js/scripts.js', array(), '1.0');
+    // wp_enqueue_script('modale', get_template_directory_uri() . '/js/scripts.js', array(), '1.0');
     wp_enqueue_script('modale2',get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), '', true);
 }
 add_action('wp_enqueue_scripts', 'script');

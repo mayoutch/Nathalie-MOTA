@@ -18,11 +18,16 @@ if ($my_query->have_posts()) :
     while ($my_query->have_posts()) : $my_query->the_post();
 ?>
         <div class="overlay-image">
-            <?php the_content(); ?>
-            <?php the_title ();?>
-            <div class="hover-image">
-                <img class="oeil" src="<?php echo get_template_directory_uri(). '/assets/images/eye.png'; ?> "alt="oeil">
+            
+            <div class="the-content">
+            <?php the_content ();?>
             </div>
+            <?php the_title ();?>
+           
+                <?php echo the_terms(get_the_ID(), 'categorie', false); ?>
+
+                <img class="oeil" src="<?php echo get_template_directory_uri(). '/assets/images/eye.png'; ?> "alt="oeil">
+            
         </div>
 <?php
     endwhile;
