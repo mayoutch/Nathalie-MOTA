@@ -52,10 +52,6 @@
 
       <!-- Vous êtes intéressés -->
 
- 
-
-
-
 			  <!-- <div class="mini-carroussel"> -->
         <!-- https://developer.wordpress.org/reference/functions/the_post_thumbnail/ -->
         
@@ -97,6 +93,9 @@ $previous_image_url = esc_url(wp_get_attachment_image_src(get_post_thumbnail_id(
     let next_image_url = '<?php echo esc_url($next_image_url); ?>';
     let previous_image_url = '<?php echo esc_url($previous_image_url); ?>';
 </script>
+
+
+
       <!-- Vous aimerez aussi -->
       <div class="aimerez">
         <p>VOUS AIMEREZ AUSSI</p>

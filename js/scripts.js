@@ -99,3 +99,5 @@ flecheDroite.addEventListener("click", function () {
   console.log("Clic sur la flèche droite");
   window.location.href = next_image_url; // Utilise la variable que tu as définie dans ton script PHP
 });
+
+// ----------------------------------------------------------------------------------------------------------------------------------------//
