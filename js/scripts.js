@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 // -------------------------- Fleche gauche, Flèche droite, dans le fichier single-post ----------------------------------------------------//
-
 const miniCarroussel = document.querySelector(".mini-carroussel");
 const flecheGauche = document.querySelector(".fgauche");
 const flecheDroite = document.querySelector(".fdroite");
@@ -76,27 +75,30 @@ function chargerImage(index) {
 // Initialisation avec la première image au démarrage
 chargerImage(currentImageIndex);
 
-//Au survol ...
+// Au survol et au clic pour la flèche gauche
 flecheGauche.addEventListener("mouseenter", function () {
   console.log("Survole de la flèche gauche");
-  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-  chargerImage(currentImageIndex);
+  // Ne fait rien au survol
 });
 
+flecheGauche.addEventListener("click", function () {
+  console.log("Clic sur la flèche gauche");
+  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+  chargerImage(currentImageIndex);
+  window.location.href = "<?php echo get_permalink($previous_post_id); ?>"; // Utilise la variable de l'image précédente
+});
+
+// Au survol et au clic pour la flèche droite
 flecheDroite.addEventListener("mouseenter", function () {
   console.log("Survole de la flèche droite");
   currentImageIndex = (currentImageIndex + 1) % images.length;
   chargerImage(currentImageIndex);
 });
 
-//Et au clic ...
-flecheGauche.addEventListener("click", function () {
-  console.log("Clic sur la flèche gauche");
-  window.location.href = "<?php echo get_permalink($previous_post_id); ?>"; // Utilise la variable de l'image précédente
-});
-
 flecheDroite.addEventListener("click", function () {
   console.log("Clic sur la flèche droite");
+  currentImageIndex = (currentImageIndex + 1) % images.length;
+  chargerImage(currentImageIndex);
   window.location.href = next_image_url; // Utilise la variable que tu as définie dans ton script PHP
 });
 
