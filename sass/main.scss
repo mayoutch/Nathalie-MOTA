@@ -22,6 +22,22 @@ body {
   
 }
 
+h1{
+position: absolute; // en lien avec le "relative" de image-container
+top: 50%; // Le code top: 50%; left: 50%; transform: translate(-50%, -50%); est une technique courante pour centrer un élément de manière précise à l'intérieur de son conteneur parent.
+left: 50%;
+transform: translate(-50%, -50%);
+font-family: Space Mono;
+font-size: 96px;
+font-style: italic;
+font-weight: 700;
+line-height: 142px;
+letter-spacing: 0em;
+text-align: center;
+-webkit-text-stroke: 2px white; // spécifier l'épaisseur et la couleur du trait autour du texte.
+-webkit-text-fill-color: transparent; // spécifier la couleur de remplissage du texte.
+}
+
 h2 {
   font-family: Space Mono;
   font-size: 18px;
@@ -162,9 +178,6 @@ li {
   
 }
 
-
-
-
 /* -------------------------- PHOTOS - ACF/CPT UI - POST CONTENTS  -------------------------------------------------*/
 .post{
   border-bottom: 1px solid;
@@ -193,7 +206,6 @@ li {
 }
 
 // img miniature au niveau des flèches (relative à l'img mise en avant dans "Mes images"):
-
 html body.customize-support article.post div.interesses div.mini-carroussel div.image-container img{
   width: 100px;
   height: 100px;
@@ -274,3 +286,22 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
 .wp-block-image img{
   
 }
+
+// --------------------------------- PAGE d'ACCUEIL -----------------------------------------------------------------//
+//-----------HERO -------------//
+#heroheader{
+  width:95vw;
+  height:auto;
+  margin: 0 auto;
+}
+
+.image-container {
+  position: relative; // en lien avec le absolute de H1 pour que le H1 soit sur l'image
+}
+
+#heroheader img{
+  object-fit: contain; 
+  max-width: 100%;
+  height: auto;
+}
+
