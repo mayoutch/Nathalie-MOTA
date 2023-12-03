@@ -1,5 +1,6 @@
 <?php get_header() ?>
 
+<!----------------------------- Hero et H1 ----------------------------------->
 <div id="heroheader"  >
 <?php
 
@@ -18,5 +19,48 @@ wp_reset_postdata();
 ?>
 <h1 >PHOTOGRAPHE EVENT</h1>
 </div>
+
+<!-------------------------------------- Catalogue photos ------------------------------------------------>
+
+<?php
+$args = array(
+    'orderby' => 'rand',
+    'posts_per_page' => 12,
+    'post_type' => 'photos'
+);
+
+$my_query = new WP_Query($args);
+
+if ($my_query->have_posts()) :
+?>
+    <div class="photo-container">
+        <?php
+        $count = 0; // Initialiser le compteur pour déterminer la position de chaque photo
+        while ($my_query->have_posts()) : $my_query->the_post();
+            $count++;
+        ?>
+            <div class="photo-item">
+                <a href="<?php the_permalink(); ?>" class="overlay-image">
+                    <div class="the-content">
+                        <?php echo get_the_content(); ?>
+                    </div>
+                    <img class="oeil" src="<?php echo get_template_directory_uri() . '/assets/images/eye.png'; ?>" alt="oeil">
+                </a>
+            </div>
+            <?php
+            // Insérer une div de saut de ligne après chaque 2e élément
+            if ($count % 2 == 0) {
+                echo '<div class="clearfix"></div>';
+            }
+        endwhile;
+        wp_reset_postdata();
+        ?>
+    </div>
+<?php
+else :
+    echo '<p>Aucune photo trouvée.</p>';
+endif;
+?>
+
 
 <?php get_footer() ?>

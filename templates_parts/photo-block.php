@@ -32,7 +32,7 @@ if ($categories && !is_wp_error($categories)) {
                         <div class="the-content">
                             <?php echo get_the_content(); ?>
                         </div>
-                        <?php the_title(); ?>
+                       
                         <img class="oeil" src="<?php echo get_template_directory_uri() . '/assets/images/eye.png'; ?>" alt="oeil">
                     </a>
                     <?php

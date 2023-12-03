@@ -259,11 +259,6 @@ input[type=text i] { /*style de la réf qui est appelée*/
   justify-content: center;
 }
 
-.overlay-image {
-  display: flex;
-  flex-direction: row;
-}
-
 .btntouteslesphotos {
   display: flex;
   width: 272px;
@@ -277,9 +272,41 @@ input[type=text i] { /*style de la réf qui est appelée*/
   align-items: center;
   justify-content: center;
   margin: auto;
+  margin-top: 50px;
 }
 
 /*taille photo - post*/
+.overlay-image {
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 564px; /* Largeur de la boîte */
+  height: 495px; /* Hauteur de la boîte */
+  margin: 0 auto; /* Centre l'élément horizontalement */
+}
+
+.overlay-image img {
+  width: 564px;
+  height: 495px;
+  object-fit: cover;
+}
+
+.overlay-image img.oeil {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: auto;
+  opacity: 0; /* Rend l'oeil invisible par défaut */
+  transition: opacity 0.3s ease;
+}
+
+.overlay-image:hover img.oeil {
+  /* Styles au survol (l'oeil devient visible) */
+  opacity: 1;
+}
+
 #heroheader {
   width: 95vw;
   height: auto;
@@ -294,4 +321,31 @@ input[type=text i] { /*style de la réf qui est appelée*/
   object-fit: contain;
   max-width: 100%;
   height: auto;
+}
+
+.photo-container {
+  width: 1148px;
+  height: 2040px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.photo-item {
+  width: 50%; /* Chaque élément occupe 50% de la largeur du conteneur parent */
+  box-sizing: border-box; /* Inclure les marges et les bordures dans la largeur et la hauteur */
+  margin-bottom: 10px;
+}
+
+.photo-item:nth-child(even) {
+  margin-bottom: 0; /* Suppression de la marge en bas pour les éléments pairs */
+}
+
+.photo-item img {
+  width: 100%; /* L'image occupe 100% de la largeur de son conteneur */
+}
+
+.clearfix {
+  clear: both; /* Éviter que les éléments flottants n'entourent pas la div de saut de ligne */
 }/*# sourceMappingURL=main.css.map */
