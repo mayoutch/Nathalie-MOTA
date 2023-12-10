@@ -51,6 +51,8 @@ const flecheDroite = document.querySelector(".fdroite");
 const imageContainer = document.querySelector(".image-container");
 
 let currentImageIndex = 0;
+// Puis Définir les URL des images => elles sont définies côté serveur, dans le fichier single-photo.php
+// Avant de les mettre (les URL) dans un tableau
 const images = [previous_image_url, next_image_url];
 
 function chargerImage(index) {
@@ -103,3 +105,4 @@ flecheDroite.addEventListener("click", function () {
 });
 
 // ----------------------------------------------------------------------------------------------------------------------------------------//
+// -------- Load more - Avec Fetch et Json-----------//

@@ -23,28 +23,33 @@ wp_reset_postdata();
 <!-------------------------------------- Catalogue photos ------------------------------------------------>
 
 <?php
+
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
 $args = array(
     'orderby' => 'rand',
     'posts_per_page' => 12,
-    'post_type' => 'photos'
+    'post_type' => 'photos',
+    'paged' => $paged,
 );
 
 $my_query = new WP_Query($args);
 
 if ($my_query->have_posts()) :
 ?>
-    <div class="photo-container">
+  <div class="photo-container" id="photo-container">
         <?php
         $count = 0; // Initialiser le compteur pour déterminer la position de chaque photo
         while ($my_query->have_posts()) : $my_query->the_post();
             $count++;
-        ?>
-            <div class="photo-item">
+            ?>
+            <div class="photo-item ajax-load">
                 <a href="<?php the_permalink(); ?>" class="overlay-image">
                     <div class="the-content">
                         <?php echo get_the_content(); ?>
                     </div>
-                    <img class="oeil" src="<?php echo get_template_directory_uri() . '/assets/images/eye.png'; ?>" alt="oeil">
+                    <img class="oeil" src="<?php echo get_template_directory_uri() . '/assets/images/eye.png'; ?>"
+                         alt="oeil">
                 </a>
             </div>
             <?php

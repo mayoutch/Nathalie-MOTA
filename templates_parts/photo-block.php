@@ -22,17 +22,23 @@ if ($categories && !is_wp_error($categories)) {
                 ),
                 'post__not_in' => array(get_the_ID()), // Exclure le post actuel
             );
-            
+
             $my_query = new WP_Query($args);
 
             if ($my_query->have_posts()) :
+                // Initialiser la variable pour stocker l'URL de l'image précédente
+                $previous_image_url = '';
+
                 while ($my_query->have_posts()) : $my_query->the_post();
+                    // Stocker l'URL de l'image précédente (premier post de la boucle)
+                    if (empty($previous_image_url)) {
+                        $previous_image_url = get_permalink();
+                    }
                     ?>
                     <a href="<?php the_permalink(); ?>" class="overlay-image">
                         <div class="the-content">
                             <?php echo get_the_content(); ?>
                         </div>
-                       
                         <img class="oeil" src="<?php echo get_template_directory_uri() . '/assets/images/eye.png'; ?>" alt="oeil">
                     </a>
                     <?php
@@ -44,7 +50,5 @@ if ($categories && !is_wp_error($categories)) {
             wp_reset_postdata();
         }
     }
-} else {
-    echo '<p>Erreur lors de la récupération des catégories</p>';
 }
-?>
+

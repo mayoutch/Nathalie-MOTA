@@ -49,3 +49,5 @@ if ( ! function_exists( 'get_field' ) ) {
 	}
 
 }
+
+//----------- Ajax-- en lien avec index.php et script.js ---------------//
