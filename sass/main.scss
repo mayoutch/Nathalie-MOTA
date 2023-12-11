@@ -360,3 +360,16 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
   clear: both; /* Éviter que les éléments flottants n'entourent pas la div de saut de ligne */
 }
 
+// ------------------------- Chargez plus ----------------------
+.chargerplus{
+  display: flex;
+  justify-content: center;
+}
+
+.chargezplus{
+
+}
+
+.appareilphoto{
+  position: absolute;
+}

@@ -348,4 +348,13 @@ input[type=text i] { /*style de la réf qui est appelée*/
 
 .clearfix {
   clear: both; /* Éviter que les éléments flottants n'entourent pas la div de saut de ligne */
+}
+
+.chargerplus {
+  display: flex;
+  justify-content: center;
+}
+
+.appareilphoto {
+  position: absolute;
 }/*# sourceMappingURL=main.css.map */
