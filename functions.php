@@ -10,14 +10,16 @@ function styles () {
 }
     add_action( 'wp_enqueue_scripts', 'styles' );
 
-// Déclarer le fichier scripts.js:
+// Déclarer le fichier scripts.js (relatif à la modale)
 function script()
 {
     // wp_enqueue_script('modale', get_template_directory_uri() . '/js/scripts.js', array(), '1.0');
     wp_enqueue_script('modale2',get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), '', true);
+
 }
 add_action('wp_enqueue_scripts', 'script');
 
+// Le fichier "fleches.js" est quant à lui chargé directement sur la page "single-photos.phh", juste au dessus du footer. Permet de n'être chargé que sur ce type de templates.
    
 // ajout d'une fonction permettant d'ajouter/de configurer les menus dans le back office:
 function my_menus() {

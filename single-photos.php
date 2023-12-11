@@ -110,12 +110,7 @@ $previous_image_url = esc_url(wp_get_attachment_image_src(get_post_thumbnail_id(
     <?php endwhile; ?>
   <?php endif; ?>
 
+  <!-- Inclure le fichier JavaScript "fleches.js" uniquement sur cette page -->
+<script src="<?php echo esc_url(get_stylesheet_directory_uri() . '/js/fleches.js'); ?>"></script>
 <?php get_footer(); ?>
 
-// Définition des URL des images directement dans le code JavaScript (côté serveur, car créait un bugg quand placé dans scripts.js au dessus du tableau)
-<script>
-  const images = [
-    "<?php echo esc_url($previous_image_url); ?>",
-    "<?php echo esc_url($next_image_url); ?>"
-  ];
-</script>
