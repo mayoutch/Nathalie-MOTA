@@ -62,9 +62,7 @@
 
 <!-- Charger plus -->
 <div class="chargerplus">
-    <a href="#!" class="btn btn_chargezplus" id="load-more"> Charger plus 
-        <img class="appareilphoto" src="<?php echo get_template_directory_uri() . '/assets/images/appareil_photo.png'; ?>" alt="appareil photo">
-    </a>
+<a href="#!" id="load-more" >Charger plus</a>
 </div>
 
 

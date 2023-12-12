@@ -19,19 +19,27 @@ function load_custom_scripts() {
 add_action('wp_enqueue_scripts', 'load_custom_scripts');
 
 
-// ---------------------- LOADMORE - Ajax ----------------------------//
-add_action('wp_ajax_load_more_photos', 'load_more_photos');
-add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
 
-function load_more_photos() {
+// ---------------------- LOADMORE - Ajax ----------------------------//
+// Functions.php
+
+add_action('wp_ajax_load_more_content', 'load_more_content');
+add_action('wp_ajax_nopriv_load_more_content', 'load_more_content');
+
+function load_more_content() {
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $offset = ($page - 1) * 12; // 12 est le nombre d'éléments par page, ajustez selon vos besoins
+
+    // Ajoutez cette ligne pour voir la valeur de 'page' dans les logs
+    error_log('Page: ' . $page);
+
+    $posts_per_page = 12; // Ajustez selon vos besoins
+    $offset = ($page - 1) * $posts_per_page;
 
     $args = array(
         'orderby' => 'rand',
-        'posts_per_page' => 12,
+        'posts_per_page' => $posts_per_page,
         'post_type' => 'photos',
-        'paged' => $page,
+        'offset' => $offset,
     );
 
     $my_query = new WP_Query($args);
