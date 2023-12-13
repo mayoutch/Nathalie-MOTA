@@ -10,7 +10,8 @@ function loadMoreContent() {
       console.log("Données reçues :", data);
       if (data.data.html != undefined) {
         let element = document.querySelector("#photo-container");
-        element.insertAdjacentHTML("beforeend", data.data.html);
+        element.insertAdjacentHTML("beforeend", data.data.html); // transformer le texte en html
+        // Incrémentation de la pagination pour charger les éléments suivants:
         page++;
       }
     })

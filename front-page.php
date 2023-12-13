@@ -14,11 +14,16 @@
     endwhile;
 
     wp_reset_postdata();
-
-    // Ajout du titre :
     ?>
+
+    <!-- Ajout du titre : -->
     <h1>PHOTOGRAPHE EVENT</h1>
 </div>
+
+<!-- Chargement des filtres -->
+<?php get_template_part ( 'templates_parts/filtres'); ?> 
+
+
 
 <!-- Catalogue photos -->
 <div class="photo-container" id="photo-container">
@@ -69,5 +74,6 @@
 
 <?php get_footer(); ?>
 
-<!-- Inclure loadmore.js uniquement sur la page d'accueil -->
+<!-- Inclure loadmore.js et filtres.js uniquement sur la page d'accueil -->
 <script src="<?php echo get_template_directory_uri(); ?>/js/loadmore.js"></script>
+<script src="http://nathalie-mota.local/wp-content/themes/Nathalie-MOTA/js/filtres.js"></script>
