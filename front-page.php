@@ -76,4 +76,4 @@
 
 <!-- Inclure loadmore.js et filtres.js uniquement sur la page d'accueil -->
 <script src="<?php echo get_template_directory_uri(); ?>/js/loadmore.js"></script>
-<script src="http://nathalie-mota.local/wp-content/themes/Nathalie-MOTA/js/filtres.js"></script>
+

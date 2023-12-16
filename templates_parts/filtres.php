@@ -1,9 +1,7 @@
 <!-- génèrer une interface utilisateur avec des sélecteurs déroulants pour filtrer les photos par catégorie, format et tri par date. 
 Ces filtres sont générés dynamiquement à partir des données de catégories et de termes de taxonomie récupérées depuis WordPress. -->
 
-
 <div class="filters-container">
-
     <div class="filters hidden">
         <div class="filter">
             <select name="categories-photos" id="filter-category" class="filter-category">
@@ -40,35 +38,31 @@ Ces filtres sont générés dynamiquement à partir des données de catégories 
         </div>
 
         <div class="filter">
-    <select name="tri" id="filter-tri" class="filter-tri">
-        <option value="default-tri">Trier par</option>
-        <?php
-        $dates = get_posts(array(
-            'posts_per_page' => -1,
-            'post_type' => 'photos',
-            'fields' => 'ids',
-            'date_query' => array(
-                array(
-                    'after' => '1 January 2000',
-                ),
-            ),
-        ));
+            <select name="tri" id="filter-tri" class="filter-tri">
+                <option value="default-tri">Trier par</option>
+                <?php
+                $dates = get_posts(array(
+                    'posts_per_page' => -1,
+                    'post_type' => 'photos',
+                    'fields' => 'ids',
+                    'date_query' => array(
+                        array(
+                            'after' => '1 January 2000',
+                        ),
+                    ),
+                ));
 
-        $years = array_unique(array_map(function ($post_id) {
-            return get_the_date('Y', $post_id);
-        }, $dates));
+                $years = array_unique(array_map(function ($post_id) {
+                    return get_the_date('Y', $post_id);
+                }, $dates));
 
-        rsort($years);
+                rsort($years);
 
-        foreach ($years as $year) {
-            echo '<option value="' . $year . '">' . $year . '</option>';
-        }
-        ?>
-    </select>
-</div>
-
+                foreach ($years as $year) {
+                    echo '<option value="' . $year . '">' . $year . '</option>';
+                }
+                ?>
+            </select>
+        </div>
     </div>
 </div>
-
-
-

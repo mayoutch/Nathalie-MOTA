@@ -7,7 +7,14 @@ function load_custom_scripts() {
   
     // Chargement fichier "scripts.js"
     wp_enqueue_script('modale2', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
-
+    wp_enqueue_script('filtres', get_stylesheet_directory_uri() . '/js/filtres.js', array('jquery'), '1.0', true);
+        // Déclarer frontendajax ici (pour les filtres)
+        $frontendajax_data = array(
+            'nonce' => wp_create_nonce('filter_photos_nonce'), // Utilisez le même nonce que dans votre fonction filter_photos
+            'ajaxurl' => admin_url('admin-ajax.php'),
+        );
+        wp_localize_script('filtres', 'frontendajax', $frontendajax_data);
+    
    
 
     // Ajouter les styles
@@ -81,7 +88,6 @@ function filter_photos()
     $category = isset($_POST['categories_photos']) ? $_POST['categories_photos'] : '';
     $format = isset($_POST['formats']) ? $_POST['formats'] : '';
     $tri = isset($_POST['tri']) ? $_POST['tri'] : '';
-    $date = isset($_POST['date']) ? $_POST['date'] : ''; // Ajout de la variable date
     $page = isset($_POST['page']) ? $_POST['page'] : 1;
 
     // Configuration de la requête
