@@ -287,6 +287,7 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
   
 }
 
+
 .overlay-image{
   position: relative;
   display: block;
@@ -294,7 +295,6 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
   width: 564px; /* Largeur de la boîte */
   height: 495px; /* Hauteur de la boîte */
   margin: 0 auto; /* Centre l'élément horizontalement */
-
 }
 
 .overlay-image img {
@@ -315,6 +315,26 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
 .overlay-image:hover img.oeil {
   /* Styles au survol (l'oeil devient visible) */
   opacity: 1;
+}
+//----------------- Lightbox ----------------------
+.mylightbox {
+  display: none;
+  /* Autres styles de positionnement, de dimension, etc. */
+}
+
+// icon pour ouverture de la lightbox
+.overlay-image img.fullscreen{
+  position: absolute;
+  top: 10%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: auto;
+  opacity: 0; /* Rend l'icone invisible par défaut */
+  transition: opacity 0.3s ease;
+}
+.overlay-image:hover img.fullscreen {
+  opacity: 0.8;
 }
 
 // --------------------------------- PAGE d'ACCUEIL -----------------------------------------------------------------//
@@ -378,7 +398,33 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
   font-family: "Space Mono", monospace;
   font-size: 12px;
   line-height: 18px;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 // ---------------------- Filtres -----------------------------------
+
+.filters {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  overflow: hidden;
+}
+
+.filters label {
+  font-family: "Poppins", serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#filter-category, #filter-format, #filter-tri {
+  border: 1px solid #B8BBC2;
+  border-radius: 4px;
+  font-family: 'Poppins', serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 11px 18px;
+  width: 260px;
+  height: auto;
+}

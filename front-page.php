@@ -50,6 +50,7 @@
                         <?php echo get_the_content(); ?>
                     </div>
                     <img class="oeil" src="<?php echo get_template_directory_uri() . '/assets/images/eye.png'; ?>" alt="oeil">
+                    <img class="fullscreen" data-image-url="<?php echo get_the_post_thumbnail_url(); ?>" src="<?php echo get_template_directory_uri() . '/assets/images/full-screen.png'; ?>" alt="fullscreen">
                 </a>
             </div>
             <?php
@@ -74,6 +75,6 @@
 
 <?php get_footer(); ?>
 
-<!-- Inclure loadmore.js et filtres.js uniquement sur la page d'accueil -->
+<!-- Inclure loadmore.js uniquement sur la page d'accueil -->
 <script src="<?php echo get_template_directory_uri(); ?>/js/loadmore.js"></script>
 

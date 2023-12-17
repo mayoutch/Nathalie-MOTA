@@ -7,6 +7,7 @@ function load_custom_scripts() {
   
     // Chargement fichier "scripts.js"
     wp_enqueue_script('modale2', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
+    
     wp_enqueue_script('filtres', get_stylesheet_directory_uri() . '/js/filtres.js', array('jquery'), '1.0', true);
         // Déclarer frontendajax ici (pour les filtres)
         $frontendajax_data = array(
@@ -14,7 +15,9 @@ function load_custom_scripts() {
             'ajaxurl' => admin_url('admin-ajax.php'),
         );
         wp_localize_script('filtres', 'frontendajax', $frontendajax_data);
-    
+
+    wp_enqueue_script('lightbox', get_stylesheet_directory_uri() . '/js/lightbox.js', array('jquery'), '1.0', true);
+  
    
 
     // Ajouter les styles

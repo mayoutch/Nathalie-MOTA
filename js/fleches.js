@@ -31,7 +31,7 @@ function chargerImage(index) {
 // Initialisation avec la première image au démarrage
 chargerImage(currentImageIndex);
 
-// Au survol et au clic pour la flèche gauche
+// Au survol et au clic sur la flèche gauche
 flecheGauche.addEventListener("mouseenter", function () {
   console.log("Survole de la flèche gauche");
   // Ne fait rien au survol
@@ -55,5 +55,5 @@ flecheDroite.addEventListener("click", function () {
   console.log("Clic sur la flèche droite");
   currentImageIndex = (currentImageIndex + 1) % images.length;
   chargerImage(currentImageIndex);
-  window.location.href = next_image_url; // Utilise la variable que tu as définie dans ton script PHP
+  window.location.href = next_image_url; // Utilise la variable définie dans le script PHP
 });
