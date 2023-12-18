@@ -2,15 +2,14 @@ console.log("Hello LightBox!");
 
 document.addEventListener("DOMContentLoaded", () => {
   const overlayImages = document.querySelectorAll(".overlay-image");
+  const myLightbox = document.getElementById("mylightbox");
+  const closeLightbox = document.getElementById("croix");
 
   overlayImages.forEach((overlayImage) => {
     const fullscreenImage = overlayImage.querySelector(".fullscreen");
 
     fullscreenImage.addEventListener("click", (event) => {
       event.preventDefault();
-
-      // Nouvelle méthode pour cibler myLightbox
-      const myLightbox = document.getElementById("mylightbox");
 
       if (myLightbox) {
         console.log("myLightbox found:", myLightbox);
@@ -27,9 +26,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Afficher la lightbox
         myLightbox.style.display = "block";
+
+        // Afficher la croix
+        if (closeLightbox) {
+          console.log("#croix found");
+          closeLightbox.style.display = "flex";
+        } else {
+          console.log("#croix not found");
+        }
       } else {
         console.log("myLightbox not found");
       }
     });
   });
+
+  if (closeLightbox) {
+    closeLightbox.addEventListener("click", () => {
+      console.log("Croix clicked");
+
+      // Cacher la lightbox lorsque la croix est cliquée
+      if (myLightbox) {
+        myLightbox.style.display = "none";
+      } else {
+        console.log("myLightbox not found");
+      }
+    });
+  } else {
+    console.log("#croix not found");
+  }
 });

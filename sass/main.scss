@@ -196,10 +196,7 @@ li {
   width: 50%;
 }
 
-.post-texte{
-  
-  
-}
+
 .title-post{
   font-family: Space Mono;
   font-size: 66px;
@@ -282,10 +279,6 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
   margin-top: 50px;
 }
 
-/*taille photo - post*/
-.wp-block-image img{
-  
-}
 
 
 .overlay-image{
@@ -319,7 +312,13 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
 //----------------- Lightbox ----------------------
 .mylightbox {
   display: none;
-  /* Autres styles de positionnement, de dimension, etc. */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
 }
 
 // icon pour ouverture de la lightbox
@@ -335,6 +334,51 @@ input[type="text" i]{ /*style de la réf qui est appelée*/
 }
 .overlay-image:hover img.fullscreen {
   opacity: 0.8;
+  background-color: rgb(204, 152, 48);
+}
+
+// --- Lightbox ---
+.lightbox__image {
+  height: 90%;
+  width: auto;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox__image img {
+  max-height: 90%;
+}
+
+.close-lightbox {
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  margin-top: 2%;
+  margin-left: 60%;
+  width: 50px;
+  background-color: rgb(204, 152, 48);
+}
+
+
+.fleches-lightbox {
+  position: absolute;
+  display: grid;
+  top: 50%;
+  margin: 20px;
+  justify-content:space-around;
+}
+
+.lien-fleche {
+  cursor: pointer;
+}
+
+.gauche,
+.droite {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(204, 152, 48);
 }
 
 // --------------------------------- PAGE d'ACCUEIL -----------------------------------------------------------------//
