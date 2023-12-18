@@ -319,6 +319,23 @@ input[type=text i] { /*style de la réf qui est appelée*/
   color: #fff;
 }
 
+.lightbox-contenu {
+  height: 703.2px;
+}
+
+.lightbox__image {
+  height: 90%;
+  width: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lightbox__image img {
+  max-height: 100%;
+}
+
 .overlay-image img.fullscreen {
   position: absolute;
   top: 10%;
@@ -335,35 +352,22 @@ input[type=text i] { /*style de la réf qui est appelée*/
   background-color: rgb(204, 152, 48);
 }
 
-.lightbox__image {
-  height: 90%;
-  width: auto;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.lightbox__image img {
-  max-height: 90%;
-}
-
 .close-lightbox {
   position: absolute;
   cursor: pointer;
   display: flex;
-  margin-top: 2%;
-  margin-left: 60%;
+  top: 20px;
+  right: 20px;
   width: 50px;
   background-color: rgb(204, 152, 48);
+  transition: all 1s ease-in-out;
 }
 
 .fleches-lightbox {
-  position: absolute;
-  display: grid;
-  top: 50%;
+  display: flex;
   margin: 20px;
-  justify-content: space-around;
+  margin-top: 20%;
+  justify-content: space-between;
 }
 
 .lien-fleche {
@@ -375,6 +379,27 @@ input[type=text i] { /*style de la réf qui est appelée*/
   width: 50px;
   height: 50px;
   background-color: rgb(204, 152, 48);
+}
+
+.lightbox-ref {
+  position: relative;
+  top: 400px;
+  left: 20px;
+  font-family: "Poppins", serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 21px;
+}
+
+.lightbox-cat {
+  position: relative;
+  color: #ffffff;
+  top: 400px;
+  left: 1210px;
+  font-family: "Space Mono", serif;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 #heroheader {

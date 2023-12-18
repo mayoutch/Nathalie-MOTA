@@ -1,6 +1,6 @@
 <div class="mylightbox" id="mylightbox">
     <div class="lightbox-contenu">
-        <img class="lightbox__image" src="" alt="Photo en grand format">
+        <img class="lightbox__image" src="" alt=".">
         <span class="lightbox-title">Titre de la photo</span>
         <span class="lightbox-ref">Référence de la photo</span>
         <span class="lightbox-cat">Catégorie</span>

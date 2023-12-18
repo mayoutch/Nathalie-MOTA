@@ -49,7 +49,7 @@
 
             if ($categories && !is_wp_error($categories)) {
             foreach ($categories as $category) {
-                $allcats=$allcats.",".$category->name;
+                $allcats=$allcats."".$category->name;
             }
         }
 

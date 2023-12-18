@@ -59,10 +59,24 @@
 $next_post = get_next_post();
 $previous_post = get_previous_post();
 
-// Définir les URL des images dans des variables PHP / les variables $next_image_url et $previous_image_url sont définies en PHP avant l'inclusion du script JavaScript. Ainsi, lorsque le script JavaScript est exécuté, ces variables seront déjà présentes et correctement définies.
-$next_image_url = esc_url(wp_get_attachment_image_src(get_post_thumbnail_id($next_post->ID), 'thumbnail')[0]);
-$previous_image_url = esc_url(wp_get_attachment_image_src(get_post_thumbnail_id($previous_post->ID), 'thumbnail')[0]);
+// Vérifier si $next_post est un objet et s'il a une propriété 'ID'
+if ($next_post && is_object($next_post) && property_exists($next_post, 'ID')) {
+  // Définir l'URL de l'image en utilisant $next_post->ID
+  $next_image_url = esc_url(wp_get_attachment_image_src(get_post_thumbnail_id($next_post->ID), 'thumbnail')[0]);
+} else {
+  // Définir une valeur par défaut si $next_post n'est pas défini, n'est pas un objet, ou n'a pas de propriété 'ID'
+  $next_image_url = ''; // ou une autre valeur par défaut
+}
+
+// Vérifier si $previous_post est un objet et s'il a une propriété 'ID'
+if ($previous_post && is_object($previous_post) && property_exists($previous_post, 'ID')) {
+  $previous_image_url = esc_url(wp_get_attachment_image_src(get_post_thumbnail_id($previous_post->ID), 'thumbnail')[0]);
+} else {
+  // Définir une valeur par défaut si $previous_post n'est pas défini, n'est pas un objet, ou n'a pas de propriété 'ID'
+  $previous_image_url = ''; // ou une autre valeur par défaut
+}
 ?>
+
 
 <div class="interesses">
     <div class="flex-interesses">
@@ -78,12 +92,17 @@ $previous_image_url = esc_url(wp_get_attachment_image_src(get_post_thumbnail_id(
             ?>
         </div>
         <div class="fleches">
+            <?php if ($previous_post && is_object($previous_post)) : ?>
             <a href="<?php echo get_permalink($previous_post->ID); ?>" class="lien-fleche">
-                <img class="fgauche" src="<?php echo get_template_directory_uri() . '/assets/images/gauche.png'; ?>" alt="flèche gauche">
+              <img class="fgauche" src="<?php echo get_template_directory_uri() . '/assets/images/gauche.png'; ?>" alt="flèche gauche">
             </a>
+            <?php endif; ?>
+
+            <?php if ($next_post && is_object($next_post)) : ?>
             <a href="<?php echo get_permalink($next_post->ID); ?>" class="lien-fleche">
                 <img class="fdroite" src="<?php echo get_template_directory_uri() . '/assets/images/droite.png'; ?>" alt="flèche droite">
             </a>
+            <?php endif; ?>
         </div>
     </div>
 </div>
