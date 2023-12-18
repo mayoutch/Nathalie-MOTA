@@ -43,6 +43,17 @@
         $count = 0; // Initialiser le compteur pour déterminer la position de chaque photo
         while ($my_query->have_posts()) : $my_query->the_post();
             $count++;
+
+            $allcats="";
+            $categories = get_the_terms(get_the_ID(), 'categories_photos');
+
+            if ($categories && !is_wp_error($categories)) {
+            foreach ($categories as $category) {
+                $allcats=$allcats.",".$category->name;
+            }
+        }
+
+
             ?>
             <div class="photo-item ajax-load">
                 <a href="<?php the_permalink(); ?>" class="overlay-image">
@@ -50,7 +61,7 @@
                         <?php echo get_the_content(); ?>
                     </div>
                     <img class="oeil" src="<?php echo get_template_directory_uri() . '/assets/images/eye.png'; ?>" alt="oeil">
-                    <img class="fullscreen" data-image-url="<?php echo get_the_post_thumbnail_url(); ?>" src="<?php echo get_template_directory_uri() . '/assets/images/full-screen.png'; ?>" alt="fullscreen">
+                    <img class="fullscreen" data-image-url="<?php echo get_the_post_thumbnail_url(); ?>" src="<?php echo get_template_directory_uri() . '/assets/images/full-screen.png'; ?>" alt="fullscreen" data-category="<?php echo $allcats ?>" data-reference ="<?php echo get_post_meta(get_the_ID(), 'reference', true); ?>">
                 </a>
             </div>
             <?php

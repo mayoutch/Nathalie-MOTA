@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
       action: "filter_photos",
       nonce: frontendajax.nonce, // Utilisation du nonce ajouté dans le PHP
       categories_photos: categoriesPhotos,
-      formats: formats,
-      tri: tri,
+      // formats: formats,
+      // tri: tri,
       page: page,
     };
     console.log("Fin de sendAjaxRequest");

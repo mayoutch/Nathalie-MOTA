@@ -5,11 +5,11 @@ Ces filtres sont générés dynamiquement à partir des données de catégories 
     <div class="filters hidden">
         <div class="filter">
             <select name="categories-photos" id="filter-category" class="filter-category">
-                <option value="default-category">Catégories</option>
+                <option value="">Catégories</option> 
                 <option value="reception">Réception</option>
                 <option value="mariage">Mariage</option>
                 <option value="television">Télévision</option>
-                <option value="concert">Concert</option>
+                <option value="concert">Concert</option>  
                 <?php
                 $categories = get_categories(array(
                     'taxonomy' => 'categories-photos',
@@ -24,7 +24,7 @@ Ces filtres sont générés dynamiquement à partir des données de catégories 
 
         <div class="filter">
             <select name="formats" id="filter-format" class="filter-format">
-                <option value="default-format">Formats</option>
+                <option value="">Formats</option>
                 <?php
                 $formats = get_categories(array(
                     'taxonomy' => 'formats',
@@ -39,7 +39,7 @@ Ces filtres sont générés dynamiquement à partir des données de catégories 
 
         <div class="filter">
             <select name="tri" id="filter-tri" class="filter-tri">
-                <option value="default-tri">Trier par</option>
+                <option value="">Trier par</option>
                 <?php
                 $dates = get_posts(array(
                     'posts_per_page' => -1,
