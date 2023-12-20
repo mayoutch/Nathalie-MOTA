@@ -15,6 +15,7 @@
            <!-- Appeler la modale de contact -->
            <?php get_template_part ( 'templates_parts/modale'); ?> 
 		   <?php get_template_part('templates_parts/lightbox'); ?>
+		   <?php get_template_part('templates_parts/menu_burger'); ?>
 		  
 <?php wp_footer(); ?>
 </body>

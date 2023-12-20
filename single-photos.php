@@ -121,7 +121,10 @@ if ($previous_post && is_object($previous_post) && property_exists($previous_pos
             <div class="photo-row">
            <?php get_template_part ( 'templates_parts/photo-block'); ?> 
            </div>
-        <input type="button" class="btntouteslesphotos" value="Toutes les photos"> <a href="">  </a></div>    
+       
+        <a href="http://nathalie-mota.local">
+        <input type="button" class="btntouteslesphotos" value="Toutes les photos">
+        </a>
       </div>
 
     </article>

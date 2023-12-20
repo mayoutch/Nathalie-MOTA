@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => {
         console.error(error);
-        // Gérer les erreurs ici si nécessaire
       });
   }
 });

@@ -16,11 +16,21 @@
         <img src="<?php echo get_theme_file_uri() . '/assets/images/logo.png'; ?> "alt="logo de Nathalie Mota">
         </div>
 
+          <!-- menu burger  -->
+          <button id="burger-menu" aria-controls="primary-menu" aria-expanded="false">
+            <img id="burgerImg" src="<?php echo get_theme_file_uri() . '/assets/images/burger.png'; ?>" alt="Menu">
+            <img id="crossImg" src="<?php echo get_theme_file_uri() . '/assets/images/croix-menu.png'; ?>" alt="Fermer">
+        </button>
+
+
+        <!-- Menu Fullscreen -->
         <nav id="nav-header">  
             <!-- Affichage du menu main-menu déclaré dans functions.php  -->
                 <?php wp_nav_menu(['theme_location' => 'main-menu',]); ?>  
                 <ul>
                     <li><a href="#" id="mybtn" class="btn-contact">CONTACT</a></li> 
                 </ul>
+           
+
         </nav>
     </header>

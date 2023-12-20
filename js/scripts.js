@@ -49,3 +49,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   }
 });
+
+// ------------------------------------- Burger Menu -----------------------------------------//
+document.addEventListener("DOMContentLoaded", function () {
+  const burgerImg = document.getElementById("burgerImg");
+  const nav = document.querySelector(".menuburger");
+  const crossImg = document.getElementById("crossImg");
+
+  // Initial setup
+  crossImg.style.display = "none";
+  burgerImg.style.display = "block";
+  nav.style.display = "none";
+
+  // Toggle
+  burgerImg.addEventListener("click", () => {
+    // Quand on clique sur le burger :
+    console.log("Burger Img Clicked");
+    nav.classList.toggle("open"); // On ouvre/ferme le menuburger qui comprend le menu en fullscreen
+  });
+});
