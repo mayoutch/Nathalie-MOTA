@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-
 <!-- Hero et H1 -->
 <div id="heroheader">
     <?php
@@ -31,11 +30,37 @@
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
     $args = array(
-        'orderby' => 'rand',
+        'orderby' => 'title',
         'posts_per_page' => 12,
         'post_type' => 'photos',
         'paged' => $paged,
     );
+
+    if ((isset($_GET["categories-photos"])) and ($_GET["categories-photos"] != "")) {
+        $args['tax_query'][] = 
+        array (
+            'taxonomy' => 'categories_photos',
+            'field'=> 'slug',
+            'terms' => $_GET["categories-photos"]
+        );
+    }
+
+    
+    if ((isset($_GET["formaty"])) and ($_GET["formaty"] != "")) {
+        $args['tax_query'][] = array (
+            'taxonomy' => 'formats',
+            'field'=> 'slug',
+            'terms' => $_GET["formaty"]
+        );
+    }
+
+    if ((isset($_GET["tri"])) and ($_GET["tri"] != "")) {
+        $args['order'] = $_GET["tri"];
+        $args['orderby'] = 'title';
+    }
+
+    // var_dump($args);
+
 
     $my_query = new WP_Query($args);
 
@@ -87,5 +112,5 @@
 <?php get_footer(); ?>
 
 <!-- Inclure loadmore.js uniquement sur la page d'accueil -->
-<script src="<?php echo get_template_directory_uri(); ?>/js/loadmore.js"></script>
+ <script src="<?php echo get_template_directory_uri(); ?>/js/loadmore.js"></script> 
 

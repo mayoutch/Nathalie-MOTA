@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
   // Déclaration d'une constante pour aller récupérer dans le DOM l'élément avec l'id `mymodale`:
   const modale = document.getElementById("mymodale");
   const single = document.getElementById("versmodale");
+  // Déclaration d'une constante pour récupérer le bouton "contact" du menu déroulant sur les mobiles :
+  const mobile = document.getElementById("Btn-mobile");
 
   // Vérifier si l'élément avec l'id "mymodale" existe avant de continuer:
   if (modale) {
@@ -26,6 +28,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
         modale.style.display = "none";
       }
     };
+
+    // Ouverture de la modale sur les mobiles depuis le menu déroulant
+    // Vérifier si l'élément avec l'id "mobile" existe avant de continuer:
+    if (modale) {
+      mobile.addEventListener("click", () => {
+        console.log("Clic sur le bouton contact sur les mobiles");
+        modale.style.display = "block";
+      });
+
+      // When the user clicks anywhere outside of the modal, close it :
+      window.onclick = function (event) {
+        if (event.target == modale) {
+          modale.style.display = "none";
+        }
+      };
+    }
 
     // ---------- Single-post / Si une réf. photo existe, on la récupère, on ouvre la modale et on fait apparaître la réf dedans ------------------
 
@@ -52,19 +70,39 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 // ------------------------------------- Burger Menu -----------------------------------------//
 document.addEventListener("DOMContentLoaded", function () {
-  const burgerImg = document.getElementById("burgerImg");
+  const burger = document.querySelector(".burger");
   const nav = document.querySelector(".menuburger");
-  const crossImg = document.getElementById("crossImg");
+  const hero = document.getElementById("heroheader");
+  const filters = document.querySelector(".filters-container");
+  const content = document.querySelector(".photo-container");
+  const charger = document.querySelector(".chargerplus");
+  const footer = document.querySelector("footer");
+  const post = document.querySelector("article");
 
-  // Initial setup
-  crossImg.style.display = "none";
-  burgerImg.style.display = "block";
-  nav.style.display = "none";
+  burger.addEventListener("click", () => {
+    console.log("Clic sur le burger");
+    // Lorsque l'on clique sur le burger :
+    burger.classList.toggle("active"); // Le burger se transforme en croix
+    nav.classList.toggle("open"); // On ouvre le menuburger qui comprend le menu rouge en plein écran
+    console.log("menu responsive rouge ouvert");
 
-  // Toggle
-  burgerImg.addEventListener("click", () => {
-    // Quand on clique sur le burger :
-    console.log("Burger Img Clicked");
-    nav.classList.toggle("open"); // On ouvre/ferme le menuburger qui comprend le menu en fullscreen
+    if (hero != null) {
+      hero.classList.toggle("remove");
+    }
+
+    if (filters != null) {
+      filters.classList.toggle("remove");
+    }
+    // on enlève les filtres
+    if (content != null) {
+      content.classList.toggle("remove");
+    } // on enlève le content
+    if (charger != null) {
+      charger.classList.toggle("remove");
+    } // on enlève "charger plus"
+    if (post != null) {
+      post.classList.toggle("remove");
+    } // on enlève le post sur les pages "single-post"
+    footer.classList.toggle("remove"); // ... et le footer
   });
 });

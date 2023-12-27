@@ -77,8 +77,10 @@ function load_more_content() {
 
     wp_die();
 }
+// Réceptionner et traiter la requête Ajax pour les filtres ------------------------------------//
+add_action('wp_ajax_filter_photos', 'filter_photos');
+add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
-// -----------------------   Requêtes Ajax pour les filtres ------------------------------------//
 
 function filter_photos()
 {
@@ -142,5 +144,4 @@ function filter_photos()
     wp_die(); // Cela arrête l'exécution de PHP et retourne la réponse
 }
 
-add_action('wp_ajax_filter_photos', 'filter_photos');
-add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
+

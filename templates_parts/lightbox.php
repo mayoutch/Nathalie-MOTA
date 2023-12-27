@@ -2,9 +2,12 @@
     <div class="lightbox-contenu">
         <img class="lightbox__image" src="" alt=".">
         <span class="lightbox-title">Titre de la photo</span>
+
+        <div class="text-lightbox">
         <span class="lightbox-ref">Référence de la photo</span>
         <span class="lightbox-cat">Catégorie</span>
-
+        </div>
+        
         <img class="close-lightbox" src="<?php echo get_template_directory_uri() . '/assets/images/croix.png'; ?>" alt="croix refermer lightbox" id="croix"></img>
         
         <div class="fleches-lightbox">

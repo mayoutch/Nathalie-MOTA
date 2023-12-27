@@ -7,20 +7,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Gestionnaire d'événement pour les changements de filtres
   // Lorsqu'un changement est détecté dans l'un de ces filtres, une fonction est appelée pour effectuer une nouvelle requête AJAX avec les filtres mis à jour.
-  document
-    .getElementById("filter-category")
-    .addEventListener("change", function () {
-      // Réinitialisation de la pagination à chaque changement de filtre
-      page = 1;
+  if (document.getElementById("filter-category") != null) {
+    document
+      .getElementById("filter-category")
+      .addEventListener("change", function () {
+        // Réinitialisation de la pagination à chaque changement de filtre
+        page = 1;
 
-      // Récupération des valeurs des filtres
-      const categoriesPhotos = this.value; //L'utilisation de this.value est courante dans les événements pour obtenir la valeur de l'élément qui a déclenché l'événement. Dans ce cas, this fait référence à l'élément avec l'ID "filter-category".
-      const formats = document.getElementById("filter-format").value;
-      const tri = document.getElementById("filter-tri").value;
+        // Récupération des valeurs des filtres
+        const categoriesPhotos = this.value; //L'utilisation de this.value est courante dans les événements pour obtenir la valeur de l'élément qui a déclenché l'événement. Dans ce cas, this fait référence à l'élément avec l'ID "filter-category".
+        const formats = document.getElementById("filter-format").value;
+        const tri = document.getElementById("filter-tri").value;
 
-      // Envoi de la requête AJAX pour filtrer les photos
-      sendAjaxRequest(categoriesPhotos, formats, tri, page);
-    });
+        // Envoi de la requête AJAX pour filtrer les photos
+        sendAjaxRequest(categoriesPhotos, formats, tri, page);
+      });
+  }
 
   // Fonction pour envoyer une requête AJAX
   function sendAjaxRequest(categoriesPhotos, formats, tri, page) {

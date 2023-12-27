@@ -43,6 +43,8 @@ h2 {
   font-weight: 400;
   line-height: 27px;
   letter-spacing: 0.1em;
+  font-style: italic;
+  text-transform: uppercase;
 }
 
 p {
@@ -58,6 +60,9 @@ p {
   }
   h2 {
     font-size: 30px !important;
+  }
+  h2 p {
+    font-size: 12px;
   }
 }
 /* ------------------------------------------ HEADER -----------------------------------------------------*/
@@ -84,7 +89,7 @@ p {
   margin: 40px;
 }
 .logo img {
-  width: 220px;
+  width: 220px !important;
 }
 
 #nav-header {
@@ -107,30 +112,99 @@ li {
   display: none; /* Par défaut, le burger n'est pas affiché */
 }
 
-/* Media query pour les grands écrans */
+/* Media query pour les grands écrans : on enlève l'icône burger et le menu burger*/
 @media only screen and (min-width: 769px) {
-  #nav-header {
-    /* Styles pour le menu header sur les grands écrans */
+  .menuburger {
+    display: none;
   }
 }
-/* Media query pour les petits écrans */
 @media only screen and (max-width: 768px) {
-  #burger-menu {
-    width: 50px;
-    display: block; /* Afficher le burger sur les petits écrans */
-    margin-right: 50px;
-  }
-  #crossImg, #burgerImg {
-    width: 50px; /* Ajuster la largeur des images */
-  }
   #nav-header {
-    display: none; /* Masquer le menu header sur les petits écrans */
+    display: none;
+  }
+  #header {
+    text-align: inherit !important;
+  }
+  .logo img {
+    width: 160px !important;
+  }
+  .burger {
+    display: block;
+    margin-right: 50px;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
+  }
+  .navnewmenu {
+    margin-left: -30px;
+  }
+  .remove {
+    display: none !important;
+  }
+  .open {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    animation: animate 1s;
+  }
+  .burger span {
+    width: 100%;
+    height: 4px;
+    background-color: #000000;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.5s ease-in-out; /* Correction ici */
+  }
+  .burger span::before,
+  .burger span::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #000000;
+  }
+  .burger span::before {
+    transform: translateY(-10px);
+  }
+  .burger span::after {
+    transform: translateY(10px);
+  }
+  .burger.active span {
+    background-color: transparent;
+  }
+  .burger.active span::after {
+    transform: translateY(0px) rotateZ(-45deg);
+  }
+  .burger.active span::before {
+    transform: translateY(0px) rotateZ(45deg);
+  }
+  .menuburger {
+    width: 100%;
+    background-color: #E00000;
+    height: 500px;
+    display: none;
+  }
+  .Accueil, .A_Propos {
+    color: white;
+    font-size: 36px;
+  }
+  .newul {
+    text-align: center;
+  }
+  .newul > li:nth-child(1) {
+    padding-bottom: 50px !important;
+  }
+  #Btn-mobile {
+    color: white;
+    background-color: #E00000;
+    border: none;
+    font-size: 36px;
+    padding-top: 50px;
   }
 }
-.menuburger.open {
-  background-color: red; /* ou toute autre propriété de style que vous pouvez identifier facilement */
-}
-
 /* ----------------------------   FOOTER   -----------------------------------------------------*/
 #footer {
   display: flex;
@@ -154,6 +228,7 @@ li {
   #footer {
     flex-direction: column; /* Changer la direction en colonne pour les écrans plus petits */
     height: auto; /* Ajuster la hauteur automatiquement */
+    text-align: center;
   }
   #nav-footer {
     flex-direction: column; /* Aligner les liens verticalement pour les écrans plus petits */
@@ -207,11 +282,19 @@ p {
     width: auto; /* Ajustement automatique de la largeur */
     height: auto; /* Ajustement automatique de la hauteur */
   }
-  p {
-    display: flex;
-    justify-content: center;
+  .wpcf7-form > p:nth-child(2) > label:nth-child(1) > span:nth-child(2) > input:nth-child(1) {
+    width: 200px;
   }
-  > img:nth-child(1) { /* Titre-logo */
+  .wpcf7-email {
+    width: 200px;
+  }
+  .wpcf7-form > p:nth-child(4) > label:nth-child(1) > span:nth-child(2) > input:nth-child(1) {
+    width: 200px;
+  }
+  textarea.wpcf7-form-control {
+    width: 200px;
+  }
+  .img:nth-child(1) { /* Titre-logo */
     width: 100% !important; /* Ajustement de la largeur à 100% */
     height: auto; /* Ajustement automatique de la hauteur */
   }
@@ -228,7 +311,7 @@ p {
     width: 100%;
   }
 }
-/* -------------------------- PHOTOS - ACF/CPT UI - POST CONTENTS  -------------------------------------------------*/
+/* -------------------------- PHOTOS - ACF/CPT UI - POST CONTENTS -------------------------------------------------*/
 .post {
   border-bottom: 1px solid;
   position: absolute;
@@ -242,8 +325,15 @@ p {
 
 .post-infos {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   width: 50%;
+  text-align: left !important;
+  border-bottom: 1px solid #060606; /* Couleur et style de la bordure */
+  margin: 10px 0; /* Marge pour espacement */
+}
+
+.desktop-view .post-infos {
+  text-align: left !important;
 }
 
 .title-post {
@@ -265,6 +355,21 @@ p {
     text-align: center;
   }
 }
+.post-texte > p:nth-child(1), .post-texte > p:nth-child(2), .post-texte > p:nth-child(3), .post-texte > p:nth-child(4), .post-texte > p:nth-child(5), .post-texte > p:nth-child(6) {
+  justify-content: left !important;
+  align-items: flex-end !important;
+}
+
+/* Ajouter une règle pour écrans de bureau sans centrer le texte */
+@media only screen and (min-width: 769px) {
+  .post-infos {
+    text-align: left !important;
+  }
+}
+.post-image > figure:nth-child(1) {
+  margin-left: 10px;
+}
+
 html body.customize-support article.post div.interesses div.mini-carroussel div.image-container img {
   width: 100px;
   height: 100px;
@@ -274,7 +379,6 @@ html body.customize-support article.post div.interesses div.mini-carroussel div.
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 118px;
   border-bottom: solid 1px black;
 }
 
@@ -330,6 +434,8 @@ input[type=text i] { /*style de la réf qui est appelée*/
 .aimerez {
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #ccc; /* Couleur et style de la bordure */
+  margin: 10px 0; /* Marge pour espacement */
 }
 
 .photo-row {
@@ -382,7 +488,6 @@ input[type=text i] { /*style de la réf qui est appelée*/
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 60px;
   height: auto;
   opacity: 0; /* Rend l'oeil invisible par défaut */
@@ -409,6 +514,10 @@ input[type=text i] { /*style de la réf qui est appelée*/
   height: 703.2px;
 }
 
+.text-lightbox {
+  align-items: initial;
+}
+
 .lightbox__image {
   height: 90%;
   width: auto;
@@ -419,7 +528,20 @@ input[type=text i] { /*style de la réf qui est appelée*/
 }
 
 .lightbox__image img {
-  max-height: 100%;
+  max-height: 95%;
+}
+
+.lightbox__image > img:nth-child(1) {
+  display: flex;
+  margin: auto;
+}
+
+.fleches-lightbox {
+  display: flex;
+  margin-top: 30%;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
 /* Media query pour les écrans de petite taille (max-width: 768px) */
@@ -429,8 +551,10 @@ input[type=text i] { /*style de la réf qui est appelée*/
     margin: auto; /* Centrer la lightbox sur l'écran */
   }
   .lightbox__image {
-    width: 90% !important;
-    height: 60% !important;
+    width: 70% !important;
+    align-items: center;
+    display: flex;
+    top: 30% o !important;
   }
   .lightbox__image img {
     max-width: 100%;
@@ -439,12 +563,27 @@ input[type=text i] { /*style de la réf qui est appelée*/
   .lightbox-cat {
     position: relative;
     top: 15px !important;
-    left: 5px !important;
     text-align: center; /* Centrer le texte */
   }
   .lightbox-cat {
-    left: 0;
-    margin-top: 10px; /* Ajuster l'espace entre les éléments */
+    left: -100px !important;
+    top: 530px !important;
+    font-size: 10px !important;
+  }
+  .lightbox-ref {
+    left: 200px !important;
+    top: 550px !important;
+    font-size: 10px !important;
+  }
+  .gauche,
+  .droite {
+    width: 30px !important;
+    height: 30px !important;
+    background-color: rgb(204, 152, 48);
+    z-index: 1000;
+  }
+  .close-lightbox {
+    width: 30px !important;
   }
 }
 .overlay-image img.fullscreen {
@@ -492,10 +631,14 @@ input[type=text i] { /*style de la réf qui est appelée*/
   background-color: rgb(204, 152, 48);
 }
 
+.text-lightbox {
+  display: flex;
+}
+
 .lightbox-ref {
   position: relative;
-  top: 400px;
-  left: 20px;
+  top: 670px;
+  left: 550px;
   font-family: "Poppins", serif;
   font-size: 14px;
   font-weight: 500;
@@ -506,11 +649,12 @@ input[type=text i] { /*style de la réf qui est appelée*/
 .lightbox-cat {
   position: relative;
   color: #ffffff;
-  top: 400px;
-  left: 1210px;
+  top: 650px;
+  left: 650px;
   font-family: "Space Mono", serif;
   font-weight: 400;
   font-size: 14px;
+  margin-top: 20px;
 }
 
 #heroheader {
@@ -586,19 +730,30 @@ input[type=text i] { /*style de la réf qui est appelée*/
   border-radius: 3px;
 }
 
+.filters-container {
+  display: flex;
+}
+
 .filters {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
   padding-top: 20px;
-  padding-bottom: 10px;
-  overflow: hidden;
+  width: 100%;
+}
+
+.filter {
+  display: flex;
 }
 
 .filters label {
   font-family: "Poppins", serif;
   font-size: 12px;
   font-weight: 500;
+}
+
+/* Style de l'option au survol  (et lien avec le Js) */
+option:hover {
+  background-color: #ff0000; /* Rouge au survol */
 }
 
 #filter-category, #filter-format, #filter-tri {
@@ -610,12 +765,35 @@ input[type=text i] { /*style de la réf qui est appelée*/
   padding: 11px 18px;
   width: 260px;
   height: auto;
+  color: #313144;
 }
 
-@media screen and (max-width: 768px) {
+div.filter:nth-child(1) {
+  margin-left: 5%;
+}
+
+div.filter:nth-child(2) {
+  margin-left: 2%;
+}
+
+div.filter:nth-child(3) {
+  margin-left: 33%;
+}
+
+@media screen and (max-width: 1350px) {
   .filters {
     display: flex;
     flex-direction: column;
     gap: 10px !important;
+    margin-bottom: 20px;
+  }
+  div.filter:nth-child(1) {
+    margin-left: 0%;
+  }
+  div.filter:nth-child(2) {
+    margin-left: 0%;
+  }
+  div.filter:nth-child(3) {
+    margin-left: 0%;
   }
 }/*# sourceMappingURL=main.css.map */

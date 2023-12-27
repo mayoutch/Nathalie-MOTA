@@ -17,10 +17,9 @@
         </div>
 
           <!-- menu burger  -->
-          <button id="burger-menu" aria-controls="primary-menu" aria-expanded="false">
-            <img id="burgerImg" src="<?php echo get_theme_file_uri() . '/assets/images/burger.png'; ?>" alt="Menu">
-            <img id="crossImg" src="<?php echo get_theme_file_uri() . '/assets/images/croix-menu.png'; ?>" alt="Fermer">
-        </button>
+          <div class="burger">
+            <span></span> <!-- span vide pour créa en css du menu burger -->
+          </div>
 
 
         <!-- Menu Fullscreen -->
