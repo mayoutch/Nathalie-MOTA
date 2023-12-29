@@ -48,7 +48,7 @@ h2 {
 }
 
 p {
-  size: 14px;
+  font-size: 14px !important;
 }
 
 @media only screen and (max-width: 767px) {
@@ -59,10 +59,10 @@ p {
     top: 30%;
   }
   h2 {
-    font-size: 30px !important;
+    font-size: 26px !important;
   }
   h2 p {
-    font-size: 12px;
+    font-size: 12px !important;
   }
 }
 /* ------------------------------------------ HEADER -----------------------------------------------------*/
@@ -119,6 +119,11 @@ li {
   }
 }
 @media only screen and (max-width: 768px) {
+  .menu {
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+  }
   #nav-header {
     display: none;
   }
@@ -203,6 +208,7 @@ li {
     border: none;
     font-size: 36px;
     padding-top: 50px;
+    cursor: pointer;
   }
 }
 /* ----------------------------   FOOTER   -----------------------------------------------------*/
@@ -214,7 +220,7 @@ li {
   border-top: 1px solid #000000 !important;
   align-items: center;
   justify-content: center !important;
-  width: 100%;
+  width: 1440px;
   background-color: white;
 }
 
@@ -229,6 +235,7 @@ li {
     flex-direction: column; /* Changer la direction en colonne pour les écrans plus petits */
     height: auto; /* Ajuster la hauteur automatiquement */
     text-align: center;
+    width: 100%;
   }
   #nav-footer {
     flex-direction: column; /* Aligner les liens verticalement pour les écrans plus petits */
@@ -242,13 +249,13 @@ li {
 /*http://www.w3bai.com/fr/howto/howto_css_modals.html#gsc.tab=0*/
 /* The Modal (background) : */
 .modale {
-  display: none;
-  position: fixed;
-  z-index: 1000;
+  display: none; /* par défaut, la modale est cachée*/
+  position: fixed; /* reste à sa place */
+  z-index: 1000; /* au dessus de tout*/
   width: 100%;
   top: 10%;
-  left: 30%;
-  animation: modale 2s ease-in-out;
+  left: 30%; /* permet de centrer la modale*/
+  animation: modale 2s ease-in-out; /* apparition progressive de la modale en fade in */
 }
 
 @keyframes modale {
@@ -266,7 +273,6 @@ p {
 
 .modale-content {
   width: 597px;
-  height: 769px;
   border: 5px solid black;
   background-color: white;
   overflow: auto !important;
@@ -274,12 +280,11 @@ p {
 
 @media only screen and (max-width: 767px) {
   .modale {
-    top: 5%; /* Ajuster la position verticale pour les écrans mobiles */
     left: 5% !important;
   }
   .modale-content {
     max-width: 80%; /* Largeur maximale pour les écrans mobiles */
-    width: auto; /* Ajustement automatique de la largeur */
+    width: 300px;
     height: auto; /* Ajustement automatique de la hauteur */
   }
   .wpcf7-form > p:nth-child(2) > label:nth-child(1) > span:nth-child(2) > input:nth-child(1) {
@@ -307,14 +312,13 @@ p {
   .btn-contact {
     color: black;
   }
-  .modale-content > img:nth-child(1) {
+  .modale-content > img:nth-child(1) { /* image titre de la modale */
     width: 100%;
   }
 }
 /* -------------------------- PHOTOS - ACF/CPT UI - POST CONTENTS -------------------------------------------------*/
 .post {
   border-bottom: 1px solid;
-  position: absolute;
   left: 50px;
   margin-right: 60px;
 }
@@ -344,15 +348,27 @@ p {
 }
 
 @media only screen and (max-width: 768px) {
+  .post {
+    margin: 0;
+  }
   .container-img-text {
     flex-direction: column-reverse;
   }
+  .post-image {
+    max-width: 95%;
+    display: flex;
+    align-self: center;
+  }
   .post-image > figure:nth-child(1) {
     max-width: 100%;
+    margin-left: auto !important;
   }
   .post-infos {
     width: 100%;
     text-align: center;
+  }
+  .post-texte {
+    margin-left: 30px;
   }
 }
 .post-texte > p:nth-child(1), .post-texte > p:nth-child(2), .post-texte > p:nth-child(3), .post-texte > p:nth-child(4), .post-texte > p:nth-child(5), .post-texte > p:nth-child(6) {
@@ -431,6 +447,12 @@ input[type=text i] { /*style de la réf qui est appelée*/
   opacity: 1 !important;
 }
 
+.aimerez > p:nth-child(1) {
+  justify-content: left;
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
 .aimerez {
   display: flex;
   flex-direction: column;
@@ -461,29 +483,24 @@ input[type=text i] { /*style de la réf qui est appelée*/
   margin-bottom: 50px;
 }
 
+/* ------------  Les images -------------- */
 .overlay-image {
   position: relative;
   display: block;
   text-align: center;
   width: 564px; /* Largeur de la boîte */
-  height: 495px; /* Hauteur de la boîte */
+  height: 564px; /* Hauteur de la boîte */
   margin: 0 auto; /* Centre l'élément horizontalement */
+  overflow: hidden; /* Assure que les images ne débordent pas de la boîte */
 }
 
-@media only screen and (max-width: 768px) {
-  .overlay-image {
-    text-align: initial;
-    width: 100%;
-    height: auto;
-    margin-left: 5px;
-  }
-}
 .overlay-image img {
   width: 564px;
-  height: 495px;
+  height: 564px;
   object-fit: cover;
 }
 
+/* L'oeil*/
 .overlay-image img.oeil {
   position: absolute;
   top: 50%;
@@ -499,6 +516,50 @@ input[type=text i] { /*style de la réf qui est appelée*/
   opacity: 1;
 }
 
+/* L'icone pour l'ouverture de la lightbox */
+.overlay-image img.fullscreen {
+  position: absolute;
+  top: 5%;
+  left: 90%;
+  width: 40px;
+  height: auto;
+  opacity: 0; /* Rend l'icone invisible par défaut */
+  transition: opacity 0.3s ease;
+}
+
+.overlay-image:hover img.fullscreen {
+  opacity: 0.8;
+  background-color: rgb(255, 255, 255);
+}
+
+@media only screen and (max-width: 768px) {
+  .overlay-image {
+    width: 95%;
+    max-width: none;
+    height: auto;
+  }
+  .overlay-image img {
+    width: 100%; /* Utilisez une unité relative pour la largeur */
+    height: auto;
+    height: 100vw; /* Hauteur égale à la largeur pour obtenir un format carré */
+  }
+  .overlay-image img.oeil {
+    width: 10%; /* Ajustez la taille de l'œil en pourcentage de la largeur de l'image */
+    max-width: 60px; /* Définissez une largeur maximale pour l'œil */
+    height: auto;
+    top: 50%; /* Ajustez la position verticale pour centrer */
+    left: 50%; /* Ajustez la position horizontale pour centrer */
+    opacity: 1; /* en version mobile, pas de survol car ne s'adapte pas aux différents navigateurs */
+  }
+  .overlay-image img.fullscreen {
+    position: absolute;
+    left: 90%;
+    width: 20px;
+    height: auto;
+    opacity: 1; /* en version mobile, pas de survol car ne s'adapte pas aux différents navigateurs */
+    background-color: rgb(255, 255, 255);
+  }
+}
 .mylightbox {
   display: none;
   position: fixed;
@@ -536,80 +597,14 @@ input[type=text i] { /*style de la réf qui est appelée*/
   margin: auto;
 }
 
-.fleches-lightbox {
-  display: flex;
-  margin-top: 30%;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-
-/* Media query pour les écrans de petite taille (max-width: 768px) */
-@media only screen and (max-width: 768px) {
-  .lightbox-contenu {
-    max-width: 90%; /* Ajustement de la largeur pour les écrans mobiles */
-    margin: auto; /* Centrer la lightbox sur l'écran */
-  }
-  .lightbox__image {
-    width: 70% !important;
-    align-items: center;
-    display: flex;
-    top: 30% o !important;
-  }
-  .lightbox__image img {
-    max-width: 100%;
-  }
-  .lightbox-ref,
-  .lightbox-cat {
-    position: relative;
-    top: 15px !important;
-    text-align: center; /* Centrer le texte */
-  }
-  .lightbox-cat {
-    left: -100px !important;
-    top: 530px !important;
-    font-size: 10px !important;
-  }
-  .lightbox-ref {
-    left: 200px !important;
-    top: 550px !important;
-    font-size: 10px !important;
-  }
-  .gauche,
-  .droite {
-    width: 30px !important;
-    height: 30px !important;
-    background-color: rgb(204, 152, 48);
-    z-index: 1000;
-  }
-  .close-lightbox {
-    width: 30px !important;
-  }
-}
-.overlay-image img.fullscreen {
-  position: absolute;
-  top: 10%;
-  left: 90%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: auto;
-  opacity: 0; /* Rend l'icone invisible par défaut */
-  transition: opacity 0.3s ease;
-}
-
-.overlay-image:hover img.fullscreen {
-  opacity: 0.8;
-  background-color: rgb(204, 152, 48);
-}
-
 .close-lightbox {
   position: absolute;
   cursor: pointer;
   display: flex;
-  top: 20px;
+  top: 50px;
   right: 20px;
-  width: 50px;
-  background-color: rgb(204, 152, 48);
+  width: 20px;
+  background-color: rgb(255, 255, 255);
   transition: all 1s ease-in-out;
 }
 
@@ -626,9 +621,9 @@ input[type=text i] { /*style de la réf qui est appelée*/
 
 .gauche,
 .droite {
-  width: 50px;
-  height: 50px;
-  background-color: rgb(204, 152, 48);
+  width: 30px;
+  height: 30px;
+  background-color: rgb(255, 255, 255);
 }
 
 .text-lightbox {
@@ -657,6 +652,60 @@ input[type=text i] { /*style de la réf qui est appelée*/
   margin-top: 20px;
 }
 
+@media only screen and (max-width: 768px) {
+  .lightbox-contenu {
+    max-width: 80%; /* Ajustement de la largeur pour les écrans mobiles */
+    margin: auto; /* Centrer la lightbox sur l'écran */
+  }
+  .lightbox__image {
+    height: 100%;
+    width: auto;
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    max-width: 120% !important;
+    align-items: center;
+    display: flex;
+  }
+  .lightbox__image img {
+    max-width: 100%;
+  }
+  .text-lightbox {
+    display: block;
+  }
+  .lightbox-ref,
+  .lightbox-cat {
+    position: relative;
+    top: 15px !important;
+    text-align: center; /* Centrer le texte */
+  }
+  .lightbox-cat {
+    left: -100px !important;
+    font-size: 10px !important;
+  }
+  .lightbox-ref {
+    left: 200px !important;
+    font-size: 10px !important;
+  }
+  .fleches-lightbox {
+    width: 80%;
+    top: 75%;
+    position: absolute;
+    margin: 0;
+  }
+  .gauche,
+  .droite {
+    width: 30px !important;
+    height: 30px !important;
+    background-color: rgb(249, 249, 249);
+    z-index: 1000;
+  }
+  .close-lightbox {
+    width: 30px !important;
+    top: 15%;
+  }
+}
 #heroheader {
   width: 95vw;
   height: auto;
@@ -669,12 +718,19 @@ input[type=text i] { /*style de la réf qui est appelée*/
 
 #heroheader img {
   object-fit: contain;
-  max-width: 100%;
+  max-width: 1440px;
   height: auto;
 }
 
+@media only screen and (max-width: 768px) {
+  #heroheader {
+    width: 100%;
+  }
+  #heroheader img {
+    max-width: 100%;
+  }
+}
 .photo-container {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
