@@ -1,10 +1,6 @@
 <!-- génèrer une interface utilisateur avec des sélecteurs déroulants pour filtrer les photos par catégorie, format et tri par date. 
 Ces filtres sont générés dynamiquement à partir des données de catégories et de termes de taxonomie récupérées depuis WordPress. -->
-<script>
-      function autoSubmit() {
-        document.querySelector('form').submit();
-      }
-</script>
+
 <?php
 if (isset($_GET["categories-photos"])) {
 $cat  = $_GET["categories-photos"];
@@ -28,7 +24,7 @@ if (isset($_GET["tri"])) {
 <div class="filters-container">
     <div class="filters hidden">
         <div class="filter">
-            <select name="categories-photos" onchange="autoSubmit()" id="filter-category" class="filter-category">
+            <select name="categories-photos" id="filter-category" class="filter-category">
                 <option value="">Catégories</option>
                 <?php
                 $categories = get_terms('categories_photos', array(
@@ -44,7 +40,7 @@ if (isset($_GET["tri"])) {
         </div>
 
         <div class="filter">
-            <select name="formaty" onchange="autoSubmit()" id="filter-format" class="filter-format">
+            <select name="formaty" id="filter-format" class="filter-format">
                 <option value="">Formats</option>
                 <?php
                 $formatsarray = get_terms('formats',array(
@@ -59,7 +55,7 @@ if (isset($_GET["tri"])) {
         </div>
 
         <div class="filter">
-            <select name="tri" onchange="autoSubmit()" id="filter-tri" class="filter-tri">
+            <select name="tri" id="filter-tri" class="filter-tri">
                 <option value="">Trier par</option>
                 <option value="ASC" <?php if ($tri == "ASC") { echo "selected"; } ?>>Croissant</option>
                 <option value="DESC" <?php if ($tri == "DESC") { echo "selected"; } ?>>Décroissant</option>

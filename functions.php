@@ -95,50 +95,67 @@ function filter_photos()
     $tri = isset($_POST['tri']) ? $_POST['tri'] : '';
     $page = isset($_POST['page']) ? $_POST['page'] : 1;
 
+    // ob_start();
+
     // Configuration de la requête
     $args = array(
         'post_type' => 'photos',
-        'paged' => $page,
+        // 'paged' => $page,
         'posts_per_page' => 10,
         'order' => 'DESC',
+        'orderby'=>'date',
     );
 
     // Ajoutez les termes de la taxonomie 'categories-photos' si nécessaire
-    if (!empty($category) && $category != 'default-category') {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'categories-photos',
-            'field' => 'slug',
-            'terms' => $category,
-        );
-    }
+     if (!empty($category) && $category != 'default-category') {
+         $args['tax_query'][] = array(
+            'taxonomy' => 'categories_photos',
+             'field' => 'slug',
+             'terms' => array($category),
+         );
+     }
 
-    // Ajoutez les termes de la taxonomie 'formats' si nécessaire
-    if (!empty($format) && $format != 'default-format') {
+     // Ajoutez les termes de la taxonomie 'formats' si nécessaire
+     if (!empty($format) && $format != 'default-format') {
         $args['tax_query'][] = array(
-            'taxonomy' => 'formats',
-            'field' => 'slug',
-            'terms' => $format,
-        );
-    }
+             'taxonomy' => 'formats',
+             'field' => 'slug',
+             'terms' => array( $format),
+         );
+     }
 
-    // Ajouter la logique de tri par date si nécessaire
-    if (!empty($tri) && $tri != 'default-tri') {
-        $args['order'] = ($tri == 'asc') ? 'ASC' : 'DESC';
-    }
+    // //  Ajouter la logique de tri par date si nécessaire
+      if (!empty($tri) && $tri != 'default-tri') {
+         $args['order'] = ($tri == 'asc') ? 'ASC' : 'DESC';
+      }
   
+
+    // $custom_terms = get_terms('categories_photos');
+    //   $args = array(
+    //     'post_type' => 'photos',
+    //     'tax_query' => array(             
+    //          array(
+    //             'taxonomy' => 'categories_photos',
+    //             'field' => 'slug',
+    //             'terms' =>  'Mariage',
+    //         ),
+    //      )
+    //   );
 
     // La requête WP_Query
     $query = new WP_Query($args);
 
+   
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
 
-            get_template_part('template-parts/photo-block');
+            get_template_part('templates_parts/photo-block');
         }
     } else {
         echo 'Aucune photo trouvée.';
     }
+// ob_end_clean();
 
     wp_reset_postdata(); // Toujours réinitialiser après une requête personnalisée
     wp_die(); // Cela arrête l'exécution de PHP et retourne la réponse
