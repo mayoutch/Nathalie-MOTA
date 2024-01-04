@@ -84,79 +84,63 @@ add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
 function filter_photos()
 {
-    // Vérifiez le nonce pour la sécurité
-    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'filter_photos_nonce')) {
-        wp_die('La sécurité de la requête n\'a pas pu être vérifiée.');
-    }
+    // // Vérifiez le nonce pour la sécurité
+    // if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'filter_photos_nonce')) {
+    //     wp_die('La sécurité de la requête n\'a pas pu être vérifiée.');
+    // }
 
     // Récupération des valeurs
-    $category = isset($_POST['categories_photos']) ? $_POST['categories_photos'] : '';
+    $categorypost = isset($_POST['categories_photos']) ? $_POST['categories_photos'] : '';
     $format = isset($_POST['formats']) ? $_POST['formats'] : '';
     $tri = isset($_POST['tri']) ? $_POST['tri'] : '';
     $page = isset($_POST['page']) ? $_POST['page'] : 1;
 
-    // ob_start();
-
     // Configuration de la requête
     $args = array(
-        'post_type' => 'photos',
-        // 'paged' => $page,
-        'posts_per_page' => 10,
-        'order' => 'DESC',
-        'orderby'=>'date',
+        'post_type' => 'photos'
     );
-
+    
+    // echo  "macat".$categorypost;
     // Ajoutez les termes de la taxonomie 'categories-photos' si nécessaire
-     if (!empty($category) && $category != 'default-category') {
+     if (!empty($categorypost) && $categorypost != '') {
          $args['tax_query'][] = array(
-            'taxonomy' => 'categories_photos',
+             'taxonomy' => 'categories_photos',
              'field' => 'slug',
-             'terms' => array($category),
+             'terms' => $categorypost
          );
      }
 
      // Ajoutez les termes de la taxonomie 'formats' si nécessaire
-     if (!empty($format) && $format != 'default-format') {
+     if (!empty($format) && $format != '') {
+        // echo $format ;
         $args['tax_query'][] = array(
              'taxonomy' => 'formats',
              'field' => 'slug',
-             'terms' => array( $format),
+             'terms' => $format
          );
      }
 
     // //  Ajouter la logique de tri par date si nécessaire
-      if (!empty($tri) && $tri != 'default-tri') {
-         $args['order'] = ($tri == 'asc') ? 'ASC' : 'DESC';
+      if (!empty($tri) && $tri != '') {
+        if ($tri == 'ASC')  {  $args['order'] = "ASC"; }
+        if ($tri == 'DESC')  {  $args['order'] = "DESC"; }
       }
-  
 
-    // $custom_terms = get_terms('categories_photos');
-    //   $args = array(
-    //     'post_type' => 'photos',
-    //     'tax_query' => array(             
-    //          array(
-    //             'taxonomy' => 'categories_photos',
-    //             'field' => 'slug',
-    //             'terms' =>  'Mariage',
-    //         ),
-    //      )
-    //   );
+    //   var_dump($args);
 
     // La requête WP_Query
     $query = new WP_Query($args);
 
-   
+    // ob_start();
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-
-            get_template_part('templates_parts/photo-block');
+            $data .= get_template_part('templates_parts/photo-block-single');
         }
     } else {
-        echo 'Aucune photo trouvée.';
+        $data = 'Aucune photo trouvée.';
     }
-// ob_end_clean();
-
+    // ob_end_clean();
     wp_reset_postdata(); // Toujours réinitialiser après une requête personnalisée
     wp_die(); // Cela arrête l'exécution de PHP et retourne la réponse
 }

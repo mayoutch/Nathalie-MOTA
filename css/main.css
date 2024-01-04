@@ -188,11 +188,12 @@ li {
   }
   .menuburger {
     width: 100%;
-    background-color: #E00000;
+    background-color: #e00000;
     height: 500px;
     display: none;
   }
-  .Accueil, .A_Propos {
+  .Accueil,
+  .A_Propos {
     color: white;
     font-size: 36px;
   }
@@ -204,7 +205,7 @@ li {
   }
   #Btn-mobile {
     color: white;
-    background-color: #E00000;
+    background-color: #e00000;
     border: none;
     font-size: 36px;
     padding-top: 50px;
@@ -287,19 +288,28 @@ p {
     width: 300px;
     height: auto; /* Ajustement automatique de la hauteur */
   }
-  .wpcf7-form > p:nth-child(2) > label:nth-child(1) > span:nth-child(2) > input:nth-child(1) {
+  .wpcf7-form
+    > p:nth-child(2)
+    > label:nth-child(1)
+    > span:nth-child(2)
+    > input:nth-child(1) {
     width: 200px;
   }
   .wpcf7-email {
     width: 200px;
   }
-  .wpcf7-form > p:nth-child(4) > label:nth-child(1) > span:nth-child(2) > input:nth-child(1) {
+  .wpcf7-form
+    > p:nth-child(4)
+    > label:nth-child(1)
+    > span:nth-child(2)
+    > input:nth-child(1) {
     width: 200px;
   }
   textarea.wpcf7-form-control {
     width: 200px;
   }
-  .img:nth-child(1) { /* Titre-logo */
+  .img:nth-child(1) {
+    /* Titre-logo */
     width: 100% !important; /* Ajustement de la largeur à 100% */
     height: auto; /* Ajustement automatique de la hauteur */
   }
@@ -312,7 +322,8 @@ p {
   .btn-contact {
     color: black;
   }
-  .modale-content > img:nth-child(1) { /* image titre de la modale */
+  .modale-content > img:nth-child(1) {
+    /* image titre de la modale */
     width: 100%;
   }
 }
@@ -371,7 +382,12 @@ p {
     margin-left: 30px;
   }
 }
-.post-texte > p:nth-child(1), .post-texte > p:nth-child(2), .post-texte > p:nth-child(3), .post-texte > p:nth-child(4), .post-texte > p:nth-child(5), .post-texte > p:nth-child(6) {
+.post-texte > p:nth-child(1),
+.post-texte > p:nth-child(2),
+.post-texte > p:nth-child(3),
+.post-texte > p:nth-child(4),
+.post-texte > p:nth-child(5),
+.post-texte > p:nth-child(6) {
   justify-content: left !important;
   align-items: flex-end !important;
 }
@@ -386,7 +402,13 @@ p {
   margin-left: 10px;
 }
 
-html body.customize-support article.post div.interesses div.mini-carroussel div.image-container img {
+html
+  body.customize-support
+  article.post
+  div.interesses
+  div.mini-carroussel
+  div.image-container
+  img {
   width: 100px;
   height: 100px;
 }
@@ -429,10 +451,11 @@ html body.customize-support article.post div.interesses div.mini-carroussel div.
     flex-direction: column !important;
   }
 }
-#versmodale { /*id du BOUTON pour aller vers la modale depuis le single-photos.php"*/
+#versmodale {
+  /*id du BOUTON pour aller vers la modale depuis le single-photos.php"*/
   width: 272px;
   height: 50px;
-  background-color: #D8D8D8;
+  background-color: #d8d8d8;
   border: none;
   text-align: center;
   cursor: pointer;
@@ -440,7 +463,8 @@ html body.customize-support article.post div.interesses div.mini-carroussel div.
   border-radius: 2px;
 }
 
-input[type=text i] { /*style de la réf qui est appelée*/
+input[type="text" i] {
+  /*style de la réf qui est appelée*/
   color: #000000 !important;
   visibility: visible !important;
   display: inline !important;
@@ -470,7 +494,7 @@ input[type=text i] { /*style de la réf qui est appelée*/
   display: flex;
   width: 272px;
   height: 50px;
-  background-color: #D8D8D8;
+  background-color: #d8d8d8;
   border: none;
   text-align: center;
   cursor: pointer;
@@ -498,6 +522,7 @@ input[type=text i] { /*style de la réf qui est appelée*/
   width: 564px;
   height: 564px;
   object-fit: cover;
+  margin-top: 25px;
 }
 
 /* L'oeil*/
@@ -812,8 +837,10 @@ option:hover {
   background-color: #ff0000; /* Rouge au survol */
 }
 
-#filter-category, #filter-format, #filter-tri {
-  border: 1px solid #B8BBC2;
+#filter-category,
+#filter-format,
+#filter-tri {
+  border: 1px solid #b8bbc2;
   border-radius: 4px;
   font-family: "Poppins", serif;
   font-size: 12px;
@@ -852,4 +879,4 @@ div.filter:nth-child(3) {
   div.filter:nth-child(3) {
     margin-left: 0%;
   }
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */

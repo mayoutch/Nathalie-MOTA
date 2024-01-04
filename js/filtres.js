@@ -1,3 +1,4 @@
+let page = 1;
 console.log("hello les filtres!");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -33,28 +34,38 @@ document.addEventListener("DOMContentLoaded", function () {
       tri: tri,
       page: page,
     };
-    console.log("Fin de sendAjaxRequest");
+    console.log("sendAjaxRequest", data);
 
     // Envoi de la requête
     fetch(frontendajax.ajaxurl, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
+        "Cache-Control": "no-cache",
       },
       body: new URLSearchParams(data),
     })
-      .then((response) => response.text())
       .then((response) => {
+        console.log('Réponse reçue',response);
+        if (!response.ok) {
+            throw new Error('Erreur du réseau');
+        }
+        return response.text();
+      })
+      
+      .then((data) => {
+        console.log("réponse2", data);
         // Mise à jour de la galerie avec les nouvelles photos
         const galerie = document.querySelector(".photo-container");
-        if (page === 1) {
-          galerie.innerHTML = response;
-        } else {
-          galerie.innerHTML += response;
-        }
+        galerie.innerHTML = data;
+        // if (page === 1) {
+        //   galerie.innerHTML = data;
+        // } else {
+        //   galerie.innerHTML += data;
+        // }
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Erreur",error);
       });
   }
 });

@@ -1,6 +1,6 @@
 <div class="mylightbox" id="mylightbox">
     <div class="lightbox-contenu">
-        <img class="lightbox__image" src="" alt=".">
+        <div class="lightbox__image"></div>
         <span class="lightbox-title">Titre de la photo</span>
 
         <div class="text-lightbox">
